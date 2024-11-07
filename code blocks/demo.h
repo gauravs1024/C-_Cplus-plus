@@ -1,0 +1,3 @@
+ namespace gaurav
+{int asean;
+}
