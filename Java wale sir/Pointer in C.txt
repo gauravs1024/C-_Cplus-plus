@@ -1,0 +1,165 @@
+/*
+   Pointer - it is a kind of variable that can hold the address of another variable.
+         or
+   Pointers in C language is a variable that stores/points the address of another variable.
+   A Pointer in C is used to allocate memory dynamically i.e. at run time. The pointer variable
+   might be belonging to any of the data type such as int, float, char, double, short etc.
+
+   KEY POINTS TO REMEMBER ABOUT POINTERS IN C:
+
+     1. Normal variable stores the value whereas pointer variable stores the address of the variable.
+     2. The content of the C pointer always be a whole number i.e. address.
+     3. Always C pointer is initialized to null, i.e. int *p = null.
+     4. The value of null pointer is 0.
+     5. & symbol is used to get the address of the variable.
+     6. * symbol is used to get the value of the variable that the pointer is pointing to.
+     7. If a pointer in C is assigned to NULL, it means it is pointing to nothing.
+     8. Pointers play a very important role in C programming language
+
+	 *  - value of the variable
+	     where we use * -
+		1. for declare the pointer type variable.
+		2. for print/display the value of the variable
+	 &  - address of the variables
+	      when  we use & - for assign the display the address of a variable
+     a normal variable store the value , but pointer variable store the address
+     of another variable.
+
+  how to declare pointer variable -
+
+      int x = 1000;
+      int *a; - single pointer
+      int **b; - double pointer
+      int ***c - triple pointer
+      int ****d; - tetra pointer
+      int *****e; - penta pointer
+
+      ** jitne * ke saath pointer variable declare karoge wo apne se ek kam ka
+	 address hold karega.
+      ** jitne * ke saath aapne pointer variable declare kiya tha agar utne hi
+         address ke saath print kar diya to - value print karega jiska wo address
+         hold kar raha tha.
+
+	  a = &x;
+	  b = &a;
+	  c = &b;
+	  d = &c;
+	  e = &d;
+
+	  print  e;  - address of d
+	  print *e;  - address of c
+	  print **e; - address of b
+	  print ***e; - address of a
+	  print ****e; - address of x
+	  print *****e; - value of the address of x
+
+    for display value of x , with x,a,b,c,d,e
+
+
+     print x;           1000
+     print *a;          1000
+     print **b;         1000
+     print ***c;        1000
+     print ****d;       1000
+     print *****e;      1000
+*/
+void swap(int*,int*);
+void swapd(int**,int**);
+void main()
+{
+   int x = 1000,y = 500;
+   int *k,*m;
+   int *a; // - single pointer
+   int **b; // - double pointer
+   int ***c; //- triple pointer
+   int ****d; //- tetra pointer
+   int *****e; // - penta pointer
+
+   a = &x;
+   b = &a;
+   c = &b;
+   d = &c;
+   e = &d;
+   clrscr();
+
+   printf("\n add of d with d - %u",&d); //  - address of d
+   printf("\n add of d with e - %u",e); //  - address of d
+   printf("\n add of c with c - %u",&c); //  - address of c
+   printf("\n add of c with e - %u",*e); //  - address of c
+   printf("\n add of b with b - %u",&b); //  - address of b
+   printf("\n add of b with e - %u",**e); //  - address of b
+   printf("\n add of a with a - %u",&a); //  - address of a
+   printf("\n add of a with e - %u",***e); //  - address of a
+   printf("\n add of x with x - %u",&x); //  - address of x
+   printf("\n add of d with e - %u",****e); //  - address of x
+   printf("\n value of x with x - %u",x); //  - value of x
+   printf("\n value of x with e - %u",*****e); //  - value of x
+   printf("\n value of x with d - %u",****d); //  - value of x
+   printf("\n value of x with c - %u",***c); //  - value of x
+   printf("\n value of x with b - %u",**b); //  - value of x
+   printf("\n value of x with a - %u",*a); //  - value of x
+   printf ("\n before swap value of x = %d , y = %d",x,y);
+   swap(&x,&y);
+   printf ("\n after swap value of x = %d , y = %d",x,y);
+   k = &x;
+   m = &y;
+   swapd(&k,&m);
+   printf("\n after swap value of x = %d , y = %d",x,y);
+   getch();
+}
+void swap(int *a,int *b) // swap the value with call by ref.
+{
+   int c = *a;
+   *a = *b;
+   *b = c;
+}
+void swapd(int **a,int **b) // swap the value of single pointer
+{
+   int c = **a;
+   **a = **b;
+   **b = c;
+}
+
+_______________________________________________________________
+
+/*
+  ->  dynamic memory allocation - means run time memory allocation
+      you can allocate memory manually during run-time. This is known as dynamic
+      memory allocation in C programming.
+
+   There are 4 library functions defined under <stdlib.h> makes dynamic memory 
+   allocation in C programming. They are malloc(), calloc(), realloc() and free().
+
+    -> malloc() + calloc() both r use for memory allocation.
+	 Q- what is the diff both? - ye aap log batayege in next class
+    -> realloc() - for memory reallocation, means memory increase / decrease
+    -> free() - for memory deallocation. - memory release - remove
+
+   The malloc() function reserves a block of memory of the specified number of bytes. And,
+   it returns a pointer of type void which can be casted into pointer of any form.
+
+    syn of malloc() -
+      (CastType *) malloc(sizeofMemory);
+*/
+void main()
+{
+    int i,n,*a;
+    clrscr();
+    printf("Plz Enter no of elements for array : ");
+    scanf("%d",&n);
+    a = (int*)malloc(sizeof(int)*n); // memort allocate kiya
+    for(i = 0;i < n; i++)
+    {
+       printf("Enter  value for a[%d] : ",i);
+       scanf("%d",&a[i]);
+    }
+    printf("\n\n Values r - ");
+    for(i=0;i<n;i++)
+      printf("%d, ",i[a]);   // *(a+i) / a[i]
+    free(a); // deallocate memory of a.
+    getch();
+
+}
+
+
+

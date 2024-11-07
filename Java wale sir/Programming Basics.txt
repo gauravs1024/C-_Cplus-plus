@@ -1,0 +1,208 @@
+
+
+
+ for design any Application / project / module / program - only focus on
+ 3 things  
+          - input (1)   -> processing (3) ->   output(2)
+
+  programming ways / approaches - 
+
+
+  1. Procedural Language
+  2. OOPs Supported Programming Language
+  3. OOPs Language 
+  4. Object based programming Languages
+
+ 1. Procedural Language -  
+
+    C is a Procedural Language or Structured Programming Languages.
+
+   Q - what is procedure?
+
+    procedure / function / method - every things C as a function.
+
+  function - block of code / set of statements / set of instructions, 
+             used for perform the partcular task. 
+
+ Procedural programming- This means everything in C is a procedure or function.
+ C programs have a main function that is the first function and also responsible
+ for starting as well as terminating the execution of the C programs.
+
+ Structured Programming is a type of programming that generally converts large
+ or complex programs into more manageable and small pieces of code. These 
+ small pieces of codes are usually known as functions or modules or sub-programs
+ of large complex programs. It is known as modular programming.
+
+    major problem with C - work with only top to down approach.   
+
+ 2. OOPs Supported Programming Language -  C++, PHP , Python.
+     - support the OOPs concept but not depends on that, bcos in C++, PHP, Python - we can 
+       design any Application without using class objects, but support the OOPs concept also.
+
+  void main()
+  {
+      int a,b,c;
+      clrscr();
+      cout<<"Welcome to C++";
+      getch();
+  }
+
+   best Book for C++ - Robort Lafore. 
+
+  C++ - C ka next version.        C ++ , C - C language , ++ - post increment - one step up - C ka nest version
+
+        C++ best book - Robort Lafore
+        Java Best book - Head First  
+
+   **  C++ is a kind of Procedural Language, but support the OOPs concept also.
+ 
+ 3. OOPs Language - Java & C# - both r the True OO programming language, 
+                    but not 100%
+ 
+    True OO - - without class object we  can't design any application, if 
+                we want to display / print simple welcome msg in java for
+                that we need to design a class 
+    Not 100% - bcos not support the multiple inheritance concept due to
+               ambiguity problem 
+
+   OOPs Fundamentals - 
+
+   1. Abstraction 
+   2. Encapsulation - Encapsulation word - drived with Capsule - in capsule 
+                      medicine protected with a layer, like our body 
+                      protected/covered with skin. 
+      ** Encapsulation means data bind in single unit.
+
+   3. Inheritance - Parent & child relations, this is the Major Adv of OOPs - Reusability. 
+
+     Q- what is the single Adv of OOPs?
+   Ans- Reusability, with the help of Inheritance. 
+  
+
+  -> sub class - when one class inherit with another class - is-A relation concept - 
+        Live ex - Parent & child relations. 
+  -> non sub class - when one class object created inside another class - has-A relation concept 
+       Live ex - Landlord & Rent person. 
+  -> in Java we have Inner class concept also - class inside class - 
+       Live ex - unborn baby.  & mother relations
+
+        1. single inheritance - 
+             1. single inheritance -     A -> B
+             2. Multi level inheritance - A -> B -> C
+             3. Hierarchical inheritance -    A -> B + C , B -> B1 + B2 , C -> C1 + C2
+
+            * Java Support 
+
+        2. Multi inheritance - 
+              1. Multi inheritance -           A + B ->  C
+              2. Hybrid Inheritance -      A -> B + C -> D
+                                 A
+                                /  \ 
+                               B    C
+                                \  /
+                                  D
+
+            * not supported by Java - due to ambiguity
+ 
+                      A - disp()            B - disp() 
+                          class C inherit with A , B 
+
+                             C o;  o.disp(); - disp A ka call ho ya B ka that is called ambiguity problem
+
+      Overriding - if parent & child class has one method with same name &
+                   sign, that is called method overriding 
+
+ class A 
+ {
+    void disp() 
+    {
+      System.out.println("Parent says, I the Boss.");
+    }
+ }
+ class B extends A  // B is the child of A
+ {
+    void disp()  // disp method overriding example.
+    {
+      System.out.println("Child says, I the Big Boss.");
+    }
+    public static void main(String aa[])
+    {
+       B o = new B();  // object design of B class
+       o.disp();
+    }
+ }
+
+
+ James Gosling - Java is a Simple Programming languages, not 
+                      support the OOPs complex concepts.
+
+       1. Operator overloading
+               int a = 10, b = 20;     c = a + b; - valid     
+               A x,y,z; - 3 objects    z = x + y; - error , but C++ me
+                                       + operator ko overload kar do
+
+       2. friends functions - not supprted by Java
+       3. Virtual Inheritance - not supported by Java. 
+       4. Multiple Inheritance - not supported by Java.
+       5. virtual distructor  - not supported by Java.
+
+   overriding - if parent & child class has one method with same name
+                & same sign(aergument & return type) that is called 
+                method overriding.
+
+ 
+
+  Q- by using interfaces Java support multiple inheritance also, tab 
+     to 100% OOPs Language hua?
+ Ans- Interfaces not part of the OOPs, bcos in OOPs concept we have
+      only class & objects.
+
+
+   4. Polymorphism  - Poly - more then one , Morphism - shape / form 
+
+     Overloading - if one class has more then one function with same name 
+                   but diff sign that is called method overloading.
+
+ verloading - if one class has more then one function with same
+               name but diff argument then that is called method 
+               overloading, java also support the Constructor overloading 
+
+ class A
+ {
+     void sum() {}
+     void sum(int a) {}
+     void sum(int a,int b) {}
+     void sum(int a,int b,int c) {}
+     void sum(int a,int b,int c,int d) {}
+     void sum(int a,int b,int c,int d,int e) {}
+     void sum(int a,int b,int c,int d,int e,int f) {}
+     void sum(int ar[]) {}
+ }
+
+ class A
+ {
+      void sum(int ... a) // var args. add in jdk1.8 no need to overload the method. 
+      {
+
+      }
+ }
+
+   public static void main(String[] args)  {}
+   public static void main(String args[])  {}
+   static public void main(String[] args)  {}
+   public static void main(String ... args)  {} - varargs - add in jdk1.8 
+
+ 
+
+
+ 4. Object using/based programming Languages - Java Script & ASP 
+     ASP - Active Server Pages 
+      all objects r pre define no need to design own objects.
+          
+   ASP - whole ASP depends on 5 objects - 
+
+      in ASP we have 5 pre define objects -
+             server , request, response, session , application
+      in Java Script we have - document, window, forms, cookies, navigate
+                               images, a 
+

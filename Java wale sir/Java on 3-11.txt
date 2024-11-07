@@ -1,0 +1,189 @@
+// simple Program just display welcome msg.
+public class Wel 
+{
+  public static void main(String[] args) 
+  {
+      System.out.println("Welcome to java");
+  }
+}
+
+ Q- we want to perform Runtime inputs in java, like scanf() in & cin in C++?
+Ans- we can perform Runtime inputs in java with the help of Scanner class
+     Scanner class stored inside java.util package & add in jdk1.5
+
+   how to use - 
+
+  1st we need to import java.util.Scanner class 
+
+ for import -
+    import java.util.Scanner; import only Scanner class. 
+    import java.util.*; import all classes & interface of util package
+                        but not import the sub packages.
+
+ 2nd - now design the Scanner object for runtime input
+
+     Scanner r = new Scanner(System.in); - jo bhi System ka input hai
+            isse Scanner me cast karke aap r ko de do
+
+-> now we can use Scanner class methods with r object for runtime input.
+-> all Scanner methods prefix with next word
+
+    int nextInt() - for input int value
+    float nextFloat() - for input float value
+    long nextLong() - for input long value
+    double nextDouble() - for input double value
+    String next() - for input next word only
+    String nextLine() - for input whole line
+___________________________________________________
+
+// Enter 2 Numbers & display sum of both.
+import java.util.Scanner;
+public class Sum 
+{
+   public static void main(String[] args) 
+   {
+    int a,b,c;
+       Scanner r = new Scanner(System.in);
+       System.out.print("Plz Enter 2 Numbers ; ");
+       a = r.nextInt(); // 1st Num
+       b = r.nextInt(); // 2nd num
+       c = a + b;
+       System.out.println("Sum is = "+c);
+  }
+}
+
+___________________________________________________
+
+// design own Reusable methods for console input & output with S name 
+
+import java.util.Scanner;
+
+public class S 
+{
+   static void println(String s)
+   {
+       System.out.println(s);
+   }
+   static int get()
+   {
+       Scanner r = new Scanner(System.in);
+       print("Plz Enter ahy Numbers ; ");
+       return r.nextInt(); // input kaaro & return karo 
+   }   
+}
+
+___________________________________________________
+
+// simple Program just display welcome msg - with own reusable methods
+public class WelR 
+{
+  public static void main(String[] args) 
+  {
+     S.println("Welcome's U");
+  }
+    
+}
+
+___________________________________________________
+// Enter 2 Numbers & display sum of both - with own reusable methods
+public class SumR 
+{
+  public static void main(String[] args) 
+  {
+     int a = S.get(); // input 1st Num
+     int b = S.get(); // 2nd Num
+     int c = a + b;
+     S.println("Sum is = "+c);
+  }    
+}
+
+___________________________________________________
+
+___________________________________________________
+
+// Enter one Number & display in reverse order with store in 3nd var & check that is palindrome or not
+public class Rev1 
+{
+   public static void main(String[] args)
+   {
+      int x,n,a=S.get(),sum=0;
+      n = a;
+      while(a>0)
+      {
+         x = a % 10;
+         sum = sum * 10 + x;
+         a = a / 10;
+      }
+      S.println("Number in Reverse : "+sum);
+      if(n==sum)
+         S.println("Number is Palindrome");
+      else
+         S.println("Number is not Palindrome");  
+  }
+}
+/*
+   a = 1234
+   x = a % 10;   x  = 4 
+   a = a / 10;   a = 123.4 , a = 123
+
+   a = 123
+   x = a % 10;   x  = 3 
+   a = a / 10;   a = 12.3 , a = 12
+
+   a = 12
+   x = a % 10;   x  = 2 
+   a = a / 10;   a = 1.2 , a = 1
+
+   a = 1
+   x = a % 10;   x  = 1 
+   a = a / 10;   a = .1 , a = 0
+*/
+
+
+___________________________________________________
+
+public class Word {
+  public static void main(String[] args) {
+     int a,x;                 // 0       1    2       3       4      5     6       7      8       9
+     String s = "only.",ar[] = {"zero","one","two","three","four","five","six","seven","eight","nine"};
+     a = S.get(); // input 1st Num
+     if(a==0)
+         s = "zero only.";
+      while (a>0) 
+      {          
+         x = a % 10;
+         s = ar[x] +" "+s; 
+         a = a / 10;
+      }
+      S.println(s);
+  }
+}
+/*
+  s = "only"
+  a = 1234
+  x = a / 10;   x = 4
+  s = ar[x=4] +" "+s;     s = "four only";
+  a = a / 10;   123.4 , a = 123
+
+  s = "four only"
+  a = 123
+  x = a / 10;   x = 3
+  s = ar[x=3] +" "+s;     s = "three four only";
+  a = a / 10;   12.3 , a = 12
+
+  s = "three four only"
+  a = 12
+  x = a / 10;   x = 2
+  s = ar[x=2] +" "+s;     s = "two three four only";
+  a = a / 10;   1.2 , a = 1
+
+  s = "two three four only"
+  a = 1
+  x = a / 10;   x = 1
+  s = ar[x=1] +" "+s;     s = "one two three four only";
+  a = a / 10;   .1 , a = 0
+
+  print s;  output "one two three four only";
+
+
+*/

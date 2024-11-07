@@ -1,0 +1,18 @@
+// count occurrence of char in a string.
+void main()
+{
+  int i,len;
+  int ar[26] = {0}; // all elements initialize with 0
+  char str[150]="chandan kumar says , i am pursuing bca from hi tech college ghaziabad";
+  clrscr();
+  printf("\n\n\n\n\n\n\n%s\n",str);
+  for(i=0;str[i]!=0;i++)
+  {
+     if(str[i]>='a' && str[i] <= 'z')
+	ar[str[i]-'a'] ++;
+  }
+  for(i=0;i<26;i++)
+    if(ar[i] != 0)
+      printf("\n%c - %d",i+'a',ar[i]);
+  getch();
+}

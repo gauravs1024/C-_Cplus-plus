@@ -1,0 +1,329 @@
+// simple program with Welcome msg
+public class Wel 
+{
+   public static void main(String[] args) 
+   {
+      System.out.println("Welcome to Java");
+   }
+}
+
+_______________________________________________________
+
+// Enter ur Name & display Welcome msg
+import java.util.Scanner;
+public class Hello 
+{
+  public static void main(String[] args) 
+  {
+      Scanner r = new Scanner(System.in);
+      System.out.print("Plz Enter ur Name : ");
+      //String n = r.next(); // next word lega
+      String n = r.nextLine(); // input until enter key press
+      System.out.println("Welcome "+n);
+  }
+}
+_______________________________________________________
+
+import java.util.Scanner;
+public class Sum 
+{
+  public static void main(String[] args) 
+  {
+    Scanner r = new Scanner(System.in);
+    System.out.print("Plz Enter 2 Numbers : ");  
+    int a,b,c;
+    a = r.nextInt(); // 1st num 
+    b = r.nextInt(); // for 2nd number
+    c =  a + b;
+    System.out.println("Sum is = "+c);
+  }
+}
+_______________________________________________________
+
+// Enter one Number & display table for that.
+import java.util.Scanner;
+public class Table 
+{
+  public static void main(String[] args) 
+  {
+      int a,x,c;
+      Scanner r = new Scanner(System.in);
+      System.out.print("Plz Enter any Number : ");
+      a = r.nextInt();
+      for(int i=1,j=10;i<=10;i++,j--)
+      {
+          c = a * i;
+          x = a * j;
+          System.out.printf("\t%02d * %02d = %03d     %02d * %02d = %03d\n",a,i,c,a,j,x);
+      }
+  }
+}
+_______________________________________________________
+
+/*
+ - design own reusable methods
+
+ in class we have 2 Types members - 
+  1. class members - use / call with className,
+      all static members of class r known as class members. 
+     ( any concept use with className that is static.)
+    * in desi language - jo bhi className ke saath call hoga
+       wo static hi hoga 
+  2. instance members - use or call with object only.
+      all non static members r known as instance members.
+
+ functions - block of code / set of statements / set of  instructions,
+         use for perform a particular task.
+  Types - 2 Types - pre define / user define
+ user define - 
+   1. no pass & no return - function with no pass argument & no return value.
+   2. no pass & return - function with no pass argument & return value.
+   3. pass & no return - function with pass argument & no return value.
+   4. pass & return - function with pass argument & return value.
+
+ syn - 
+    returnType funName(argument/s)
+    {
+       statement/s;
+       return value, if return type given
+    )
+
+ if we don't want to return any value then design with void keyword, 
+ mean function void returntype ke saath design hai to wo koi value 
+ return nahi karega 
+*/
+import java.util.Scanner;
+public class S 
+{
+    static int get()  // ClassMember Type - 2 - no pass & return 
+    {
+        Scanner r = new Scanner(System.in);
+        System.out.print("Plz Enter any Number : ");
+        return r.nextInt(); // jo value input kiya use calling parson ko return kar diya.
+    }
+}
+_______________________________________________________
+
+// Input 2 Numbers & display sum with own reusabme methods 
+public class SumR 
+{
+  public static void main(String[] args) 
+  {
+    int a,b,c;
+    a = S.get(); // 1st num 
+    b = S.get(); // for 2nd number
+    c =  a + b;
+    System.out.println("Sum is = "+c);
+  }
+}
+_______________________________________________________
+
+// Enter one Number & display table for that with own reusable methods.
+public class TableR 
+{
+  public static void main(String[] args) 
+  {
+      int a,x,c;
+      a = S.get();
+      for(int i=1,j=10;i<=10;i++,j--)
+      {
+          c = a * i;
+          x = a * j;
+          System.out.printf("\t%02d * %02d = %03d     %02d * %02d = %03d\n",a,i,c,a,j,x);
+      }
+  }
+}
+
+_______________________________________________________
+
+// Enter one Number & display in reverse order.
+public class Rev 
+{
+  public static void main(String[] args) 
+  {
+    int a,x,b,rev=0;
+    a = S.get(); // input liya
+    while(a > 0)
+    {
+      b =  a % 10;  
+      rev = rev * 10 + b;
+      a = a / 10; 
+    }
+    System.out.println("Number in Reverse : "+rev);
+  }
+    
+}
+/*
+  
+   a = 1234
+
+ reverse -   rev = 4321
+
+ logic
+
+ rev = 0;
+ a = input number 
+
+ while a > 0 tak
+    b =  a % 10;  
+    rev = rev * 10 + b;
+    a = a / 10; 
+ end loop 
+
+ a = 1234 
+ step 1 -  a > 0 hai
+
+   b = a % 10;      b = 4
+   rev = rev * 10 + b;    0 * 10 = 0 + 4 = 4
+   a = a / 10;   a = 123.4 , final a = 123
+
+ a = 123 
+ step 2 -  a > 0 hai
+
+   b = a % 10;      b = 3
+   rev = rev * 10 + b;    4 * 10 = 40 + 3 = 43
+   a = a / 10;   a = 12.3 , final a = 12
+
+ a = 12 
+ step 3 -  a > 0 hai
+
+   b = a % 10;      b = 2
+   rev = rev * 10 + b;    43 * 10 = 430 + 2 = 432
+   a = a / 10;   a = 1.2 , final a = 1
+
+ a = 1 
+ step 4 -  a > 0 hai
+
+   b = a % 10;      b = 1
+   rev = rev * 10 + b;    432 * 10 = 4320 + 1 = 4321
+   a = a / 10;   a = .1 , final a = 0
+ step - 5  
+   a = 0 - end ho gaya
+ 
+*/
+_______________________________________________________
+
+// Enter one Number & display Palindrome or not. 
+public class Palin 
+{
+  public static void main(String[] args) 
+  {
+    int a,x,b,rev=0,num;
+    a = S.get(); // input liya
+    num = a; // num store the actual number 
+    while(a > 0)
+    {
+      b =  a % 10;  
+      rev = rev * 10 + b;
+      a = a / 10; 
+    }
+    if(num==rev)
+       System.out.println("Given Number is Palindrome");
+    else
+       System.out.println("Given Number is not Palindrome");
+  }
+}
+_______________________________________________________
+
+// Enter one Number & display Arm Strong or not
+public class ArmStrong 
+{
+   public static void main(String[] args) {
+     int a,x,s = 0,num = 0;
+     a = S.get(); // input liye 
+     num = a;
+     while(a>0)
+     {
+         x = a % 10; 
+         s = (x * x * x) +s; // s = s + x;
+         a = a / 10;
+     }
+     if(num == s)
+       System.out.println("Number is Armstrong");
+     else 
+       System.out.println("Number is not Armstrong");
+     
+  }
+    
+}
+// a = 153 ,   1 * 1 * 1 = 1 + 5 * 5 * 5 = 125 + 3 * 3 * 3 = 27
+// 1 + 125 + 27 = 153
+_______________________________________________________
+
+// Enter one Number & display in word , without if else & switch case 
+// 1234 - output - one two three four only. 
+public class Word 
+{
+    public static void main(String[] args) 
+    {                //  0       1     2     3       4      5      6     7      8         9
+        String ar[] = {"zero","one","two","three","four","five","six","seven","eight","nine"};
+        String s = "only.";
+        int a , x;
+        a = S.get();
+        if(a==0)
+           s = "zero only.";
+        while(a>0)
+        {
+            x = a % 10;
+            s = ar[x] + " "+s; 
+            a = a / 10;
+        }
+        System.out.println(s);
+    } 
+}
+/*
+    a = 1234 
+    s = only
+    x = a % 10;  a = 4
+    s = ar[x=4] + " "+s;   s= four only.
+    a = a / 10;  a = 123
+
+    a = 123 
+    s = four only.
+    x = a % 10;  a = 3
+    s = ar[x=3] + " "+s;   s= three four only.
+    a = a / 10;  a = 12
+
+    a = 12 
+    s = three four only.
+    x = a % 10;  a = 2
+    s = ar[x=2] + " "+s;   s = two three four only.
+    a = a / 10;  a = 1
+
+    a = 1 
+    s = two three four only.
+    x = a % 10;  a = 1
+    s = ar[x=2] + " "+s;   s = one two three four only.
+    a = a / 10;  a = 0
+   
+ exit ho jayega & print s 
+  
+*/
+
+_______________________________________________________
+// Enter one Number & display in word , without if else & switch case 
+// 1234 - output - one thousand two hundred thirty four only. 
+public class Words
+{
+    public static void main(String[] args) 
+    {                //  0       1     2     3       4      5      6     7      8         9
+        int a, x,cr,lakh,th,hun,tens;
+        a = S.get();
+        cr = a / 10000000; 
+        System.out.println("Crore is - "+cr);
+        a = a % 10000000; // lakh
+        lakh = a / 100000;
+        System.out.println("Lakh is - "+lakh);
+        a = a % 100000; // thousandh
+        th = a / 1000;
+        System.out.println("Thousand is - "+th);
+        a = a % 1000; // hundred
+        hun = a / 100;
+        System.out.println("Hundred is - "+hun);
+        a = a % 100; // tens
+        System.out.println("tens is - "+(a/10));
+        System.out.println("ones is - "+(a%10));
+    }  
+}
+
+_______________________________________________________

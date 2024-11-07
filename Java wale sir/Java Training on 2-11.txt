@@ -1,0 +1,239 @@
+ how to work with java - 
+ 
+   Basics of Programming Language - 
+  
+  same in C, C++ & Java - 
+  
+    1. datatypes in Java -  
+        2 Types - 
+          1. primitive - total 8 data types 
+          2. Non Primitive - arrays + class + java's Collection framework
+        
+   1. primitive - total 8 data types 
+
+      datatype          size    range 
+ for Numbers - 
+
+      byte             1 byte           -128 to +127
+      short            2 bytes          -32768 to +32767
+      int              4 bytes
+      long             8 bytes
+ for point values
+      float            4 bytes
+      double           8 bytes - koi bhi point value default double hoti hai. 
+
+  for char data types 
+      char             2 bytes - for 512 charset support
+                         unicode data - national charset
+  for boolean values - 
+      boolean          1 bit, true & false, default is false
+
+  Conditions & looping - same to C & C++ 
+   1. if - else if - else                  
+   2. switch case - minor use
+
+   if(condition)
+     statement/s;
+   else if(condition)
+     statement/s;
+   else
+      statement/s
+ 
+ switch case - 
+
+    switch(var)
+    {
+       case 1: 
+          statement/s;
+          break;
+       case 2: 
+          statement/s;
+          break;
+       case 3: 
+          statement/s;
+          break;
+       case 4: 
+          statement/s;
+          break;
+       default :
+          statement/s;
+     }
+
+   Q- what is the diff b/w Java & C, C++ if else?
+  
+   in C & C++ - 0 for false, excluding 0 true
+   but in java we have boolean value for that - true / false
+
+   #include<stdio.h>
+   void main()
+   {
+       int a;
+       if(a=5)   
+          printf("Ha Ha Ha Ha Ha");
+       else
+          printf("He He He He He");
+   }   
+     true - Ha Ha Ha Ha - 5 for true 
+     but in java we have error msg
+
+     never ending loop - 
+
+       while(1) in C , while(100) - valid 
+  
+  in java -    while(true)  {} - never ending loop.
+
+ Loops - same as C++ & Java, but in java we have one extra loop also
+       that is for each loop - for ka enhance version 
+       - add in jdk1.5 & only for arrays & collection 
+        framework 
+
+      for(declare/initialize;condition;incr/decr) {}
+   
+      while(condition)        do
+      {                       {
+         statement/s;           statement/s;
+         incr/decr;             incr/decr;
+      }                       }
+                              while(condition);
+      
+   * while loop major use in IT.
+   * problem with for loop - slow
+ 
+// to create simple program in java, just display welcome msg
+class Wel // program always sytart with class ClassName
+{
+    public static void main(String args[]) // like main in C & C++ 
+    {
+       System.out.println("Welcome to Java"); // like cout in C++ & printf() in C
+    }
+}
+
+  
+   inside class we have 2 Types of members - 
+     1. Class Members - use / call with ClassName
+           Integer.parseInt() , Float.parseFloat(); , System.out 
+      ** all static members of class r known as static members.
+
+     2. Instance members - use/call with object only
+          all non static members r known as instance member 
+
+       Scanner r = new Scanner(System.in);
+       int a = r.nextInt(); - nextInt() call with object - instance members 
+
+  Q- why use static with main function?
+Ans- main in C++ - out side the class body, but main in java inside class body. just declare as
+     static for direct calling by JVM without creating object of this class.
+
+C++ - main
+#include<iostream.h>
+#include<conio.h>
+class A
+{
+   // attributes + methods
+};
+void main()
+{
+}
+
+in java - 
+
+class A
+{
+   void main()
+   {
+   }
+}
+
+ James Gosling - Major problem - main function call kaise hooga - object design karenge - object 
+ design karenge to kaha karenge. just declare as static for direct calling by JVM without creating
+ object of this class - jab java ki application ko run karenge to JVM sabse pahle main ko call karenge 
+ - main direct call - bcos of static
+
+ save with Wel.java  - compile & run
+
+Rules - 
+
+ 1st -class name & file name must be same, if class not public then we can save with other name also,
+       but if class is public then save with that name only.
+       ** classname & file name always same rakhna hai.
+
+ 2nd - all existing/pre define + own classes & interface must be use / design with Pascal case.
+      - every word 1st char should be capital - har word ka 1st char capital hooga. 
+
+       MayankBadal 
+  
+  ex - String, Button, Label, Font, System, Menu, Frame, Integer, Float, List, Set, Map, TextField, FocusEvent,
+       TextArea, NumberFormatException, ArrayIndexOutOfBoundsException, MouseEvent, KeyEvent, ArrayList, 
+       HashMap, HashTable, Statement, DriverManager, CallableStatement, MenuBar, MenuItem, ActionEvent,
+       StringIndexOutOfBoundsException. DatabaseMetaData, ResultSetMetaData. 
+   
+   own classes - SignIn.java, RegisterAction.java, EmpForm.java, EmpAction.java, SignUp.java,
+           EmpForm.java, Customer.java, CustomerAction.java, EmpReport.java, SalarySlip.java,
+           Product.java, AddProduct.java, DeleteProduct.java, ProductReport.java 
+
+   in desi lang - jab bhi kisi class ko use or design karo uske wording karke dekh lo & word ka 1st char capital kar do. 
+
+   means Jiska bhi 1st char capital hai in whole java wo class ha interface hi hoga may be pre define or user define. 
+
+   what is String? / String is a data type or class Java in java ?
+   always says no - String is a class, bcos 1st char of String is capital - means pascal case hai to class ya interface hi hoga 
+
+
+ 3rd - all existing/pre define + own methods & Attributes must be design or use with camel Case.
+   
+  -> excluding 1st word's 1st char, all remaining words 1st char should be capital, that is must.
+
+   get(), set(), select(), add(), getText(), setText(), parseInt(),parseFloat(), valueOf(), getInt(),
+   getString(), getDate(), getValue(), getSelectedText(), getSelectedItem(), getX(), getY(), isBold(),
+   toUpperCase(), toLowerCase(), equals(), equalsIgnoreCase(), length(), charAt(), indexOf(), startsWith(),
+   lastIndexOf(), getConnection(), getStatement(), executeQuery(), executeUpdate(), setFont(), setColor(), 
+   setBackground().
+ 
+   own methods - must be design with camel case - 
+
+     checkId(), addUser(), delUser(), addProfile(), getProfile(), getEmp(), addEmp(), salarySlip(),
+     getSelectedUser(), getMobile(), getName(), getMailId(), getDOB()
+
+ 4th- all existing/own const variables must be use/design with UPPER CASE.   const - fixed - can't change 
+
+
+      Calendar.HOUR/MINUTE/SECOND/YEAR/MONTH/DATE
+ 
+      Font.PLAIN/BOLD/ITALIC
+
+ 5th - class name not start with any reserve name 
+
+       class if{}
+       class class{} 
+       class int {}
+       class for {}
+       class public {} 
+       
+       class For{} - valid hai
+       
+ finally - 
+
+  1st - class name & file name always always same rakhna hai
+  2nd - all classes must be design or use with Pascal Case - har word ka 1st char capital hoga
+  3rd - all existing methods & attributes must be design or use with camelCase 
+  4th - all existing + own const. attributes myst be design or use with Upper case. 
+  5th - class name not start with any Reserved word or existing class name. 
+ 
+
+// print 1 to 50 prime numbers without using 3rd variable & multiple conditions.
+// java not support the C & C++ goto pointer/label concept but we can 
+// assign loop label/name in java same as goto pointer concept of C & C++. 
+// loop label/name concept add in jdk1.5 for improve the loop performence.
+class Prime
+{
+  public static void main(String aa[])
+  {
+  n: for(int i=1;i<=50;i++) // n is the loop name/label
+     {
+       for(int j=2;j<=i/2;j++)
+          if(i%j==0)
+            continue n; // contd.. the n loop, jump to n next step.
+       System.out.println(i);  // is like pe control tabhi aayega, jab inner loop condition false hoogi, means number prime hai..
+     }
+  }
+} 

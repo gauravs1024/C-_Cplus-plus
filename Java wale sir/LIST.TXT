@@ -1,0 +1,159 @@
+/*
+   steps for implement linked List -
+
+    1st - design the struct with node name, that contain 2 attributes
+	   1. data - that can be primitive & non primitive type
+	   2. node type pointer var with next name
+
+   C & C++ -                             Java
+					 class LinkedList
+struct node                              {
+{                                            class Node
+   int data;                                 {
+   struct node *next;                            int data;
+};                                               Node next;
+					     }
+
+	 struct in C                      struct in C++
+    * need to typedef                        * no need of typedef
+
+    struct node *fst,*curr,*tmp;                node *fst,*curr,*tmp;
+   * in C struct we can't design functions   * we can design function in C++
+						function.
+   * NOT sapport access modifiers            * support the access modifiers.
+
+	  struct 				class
+   * not support the OOPs concepts           * support the OOPs concept.
+   * default access modifier in C++ struct  * default access modifier in C++
+     is - public                              class - private.
+
+
+ 2nd
+ - now design the struct type pointer variables for manage the list
+
+  in C & C++ -
+
+   struct node *fst = NULL, *curr,*tmp,*prev,*last;
+
+  in java - Node fst=null,last,prev,tmp,curr;
+
+
+     fst - for hold the ref of 1st node - it can be - fst / head / start / first / top / root
+     tmp - for tmp node - add new node
+     curr - for hold the ref of current node
+     prev - for hold the address of prev node - for add new name before the
+	    particular.
+     last - for hold the ref of last node.
+
+ in C & C++
+
+ 3rd - now define / design function prototype for manage the list/
+
+ int isempty();
+ void addfirst();
+ void addlast();
+ void addmid();
+ void disp();
+ void del();  // delfirst() / delLast() / delMid();
+ void sort();
+
+
+  4th - now design main function & design menu for manage the list
+*/
+#include<stdio.h>
+struct node
+{
+   int data;
+   struct node *next;
+};
+
+ struct node *fst = NULL, *curr,*tmp,*prev,*last;
+ int isempty();
+ void addfirst();
+ void addlast();
+ void addmid();
+ void disp();
+ void del();  // delfirst() / delLast() / delMid();
+ void sort();
+
+void main()
+{
+    char c;
+    while(1)
+    {
+       clrscr();
+       printf("\n\n\t\t1. Add new Node in begining.");
+       printf("\n\n\t\t2. Add new Node in last. ");
+       printf("\n\n\t\t3. Add new Node in Mid");
+       printf("\n\n\t\t4. List of all existing Node.");
+       printf("\n\n\t\t5. Delete for existing Node.");
+       printf("\n\n\t\t6. Sort List elements in Ascending order");
+       printf("\n\n\t\t0. for exit");
+       printf("\n\n\t Plz Enter ur Choice : ");
+       c = getche();
+       if(c=='1')
+	  addfirst();
+       else if(c=='4')
+	  disp();
+       else if(c=='0')
+	 break;
+       else
+	 printf("\n\n\t\t Sorry this is invalid Choic.");
+       getch();
+    }
+}
+
+int isempty()            // boolean isempty() {  return fst==null;  }
+{
+   return fst==NULL; //
+}
+void addfirst()
+{
+    // allocate memory for node
+    tmp = (struct node*) malloc(sizeof(struct node));  // C++ & Java - tmp = new Node();
+    printf("\n\n\tPlz Enter value for Node : ");
+    scanf("%d",&tmp->data);
+    tmp->next = fst;
+    if(isempty())
+      last = tmp;
+    fst = tmp;
+    printf("\n\n Node Successfully Inserted..");
+}
+void disp()
+{
+    if(isempty())
+       printf("\n\n\t Sorry ur List is empty.");
+    else
+    {
+       curr = fst;
+       printf("\n\n\tElements in List : ");
+       while(curr!=NULL)
+       {
+	   printf("%d, ",curr->data);
+	   curr = curr->next;
+       }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

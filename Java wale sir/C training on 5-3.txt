@@ -1,0 +1,229 @@
+
+
+  C, DSA & Core java 
+
+  C - Array related problems - 
+  
+
+ UI Developer - Web Development - HTML + CSS + JS + 
+       BootStrap + AJAX, 
+       after that - React JS & Angular JS 
+
+  Server side - 
+
+    PHP - open source - for low profile job
+    Java tech -Servlets + JSP, Spring Core + MVC + boot
+       Hibiernate 
+    Node JS 
+    ASP.Net 
+    Python Django 
+
+______________________________________________
+
+Interview questions on C - 
+ 
+  for design any application in C, we need to include the header files, but no need to
+  include for C compilers, because basic/core functions default includes in C compiler, 
+  for include header files we have 2 statements, what is the diff b/w - 
+
+  #include<stdio.h> - include from lib/include folder
+     or
+  #include "stdio.h" - include from user location, use for include the own header files.
+ 
+Q- we can design own header file or not, if yes then what is the need of that?
+Ans- yes can create just same with .h extension & used for implement the modular approach,
+     for implement modular approach in C we have concept of header files, in java for implement 
+     modular approach we have concept of package & in .Net we have concept of name spaces.
+ 
+Modular Approach - 
+
+    * Simplicity - easy to use
+    * Reusability - design once & can call/use any where
+    * Performance Improve
+    * Error Handling & debugging easy
+    * Team work & time Management. 
+
+   ** we can include c or .txt file also
+
+ Q- we can include .c file or not / we can include .txt file or not?
+Ans - yes can include. 
+
+for console output we have printf() function & for console input we have scanf() function.
+
+	printf - print with format
+	scanf - scan with format
+
+   format - %d , %s , %c , %ld , %u , %lld , %10s , %05d
+    
+ Q- what is the return type of printf() function?
+Ans - return type of printf() function is int, return number of chars.
+
+   int x;
+   x = printf("Welcome"); 
+   x = 7;
+
+   printf("%d",printf("Hello"));
+
+   1. error              2. 5Hello 
+   3. Hello5  - ans      4. none 
+
+   for decimal value print - %d, %i
+
+   Q- how to display welcome msg in C without using ;
+ Ans- yes can design with if statement. bcos conditions in C - 0 for false, excluding 0 true
+ 
+   int a = 5;
+   if(a)   // if(a==5)  or if(a=5)
+     printf("Hello"); - output 
+   else
+     printf("Thanx"); 
+
+void main()
+{
+    if(printf("Welcome")){}
+}  
+
+
+ Q- we have getch() & getche() functions what is the diff b/w both?
+
+  getch()  - get - input , ch - char, get any char from keyboard but not display that.
+             use for hold the output screen, use for design the encrypted based application
+             like - password input.
+  getche() - get - input , ch - char, e - echo - print get any char from keyboard but not display that.
+             - use for design the choice based application, like confirmation / Menu design 
+
+
+  Datatypes in C - 
+
+    1. Primitive Datatypes - int , long, float, double, char 
+    2. composite Datatypes - group/collection of elements. - Arrays + Structure + Union + enum
+
+ Arrays - Array is the collection of Similar Kind of Data items that share a common name.
+     or
+ Arrays a kind of data structure that can store a fixed-size sequential collection of 
+ elements of the same type. An array is used to store a collection of data.
+  
+ int ar[10]; -- array design with 10 elements & values stored ar ar[0] to ar[9]; 
+         . 
+
+  ** A specific element in an array is accessed by an index.
+  ** Arrays is the example of contiguous memory locations
+
+  problem with declare multiple variables- 
+
+      1. Time Consuming
+      2. Performance Slow
+      3. Complex .
+
+   but in array we can declare 10 / 100 variables in single line statement
+      int ar[10];  - array elements - 1st element - ar[0] to ar[9];
+         1st element stored at ar[0] index & last element store at ar[size-1] index.
+
+ All arrays consist of contiguous memory locations. The lowest address corresponds to the first element
+ and the highest address to the last element.
+
+ Array is the example of contiguous memory allocations.
+
+    int ar[10];  - sizeof int - 2 bytes * 10 = 20 Bytes - 2 - 2 bytes - 10 elements design honge  
+ 
+   Q- we want to design array with default initialized value
+	      int ar[] = {10,20,30,40,50};
+                    or
+              int ar[5] = {10,20,30,40,50};
+
+     int ar[5] = {0};  - all elements initialize with 0 
+     int ar[5] = {0,10};  - all elements initialize with 0 & 2nd elements initialized with 10 
+     
+ DIFFERENCE BETWEEN C VARIABLE, C ARRAY AND C STRUCTURE:
+
+     -> A normal C variable can hold only one data of one data type at a time.
+     -> An array can hold group of data of same data type.
+     -> A structure can hold group of data of different data types and Data types 
+        can be int, char, float, double and long double etc.
+
+#define MAX 10
+void main()
+{
+    int ar[MAX],i,j;
+    clrscr();
+    for(i=0;i<MAX;i++)
+    {
+     n:
+	printf("Plz Enter value for ar[%d] : ",i);
+	scanf("%d",&ar[i]);
+	for(j=0;j<i;j++)
+	{
+	   if(ar[i] == ar[j])
+	   {
+	     printf("\n\n Value already exist, re-enter plz...\n");
+	     goto n;
+	   }
+	}
+    }
+    printf("\nElements r - ");
+    for(i=0;i<MAX;i++)
+      printf("%d, ",i[ar]);
+    getch();
+}
+
+______________________________________________________________________
+
+// design the dynamic array using malloc() function, wih accept/input unique values. 
+void main()
+{
+    int *ar,i,j,n;
+    clrscr();
+    printf("Plz Enter size of array : ");
+    scanf("%d",&n);
+    ar = (int*)malloc(sizeof(int)*n);
+    for(i=0;i<n;i++)
+    {
+     n:
+	printf("Plz Enter value for ar[%d] : ",i);
+	scanf("%d",&ar[i]);
+	for(j=0;j<i;j++)
+	{
+	   if(ar[i] == ar[j])
+	   {
+	     printf("\n\n Value already exist, re-enter plz...\n");
+	     goto n;
+	   }
+	}
+    }
+    printf("\nElements r - ");
+    for(i=0;i<n;i++)
+      printf("%d, ",i[ar]);
+    free(ar);
+    getch();
+}
+_______________________________________________________________________________________
+
+/*
+enum is a user-defined data type that can be assigned some limited values. These values are defined 
+by the programmer at the time of declaring the enumerated type. It is mainly used to assign names to 
+integral constants
+*/
+enum days {sun,mon=7,tue,wed,thu,fri,sat};
+enum boolean {false,true};
+void main()
+{
+   enum days d = tue;
+   enum boolean flag = false;
+   clrscr();
+   d = fri;
+   printf("Days is - %d\n\n",d);
+   if(flag)
+      printf("Flag is true.");
+   else
+      printf("Flag is false.");
+   getch();
+}
+
+HW -
+
+ 1. remove repeated elements from array.
+ 2. count no of repeated elements in array.
+ 3. find out 1st & 2nd highest elements from array.
+ 4. find out max repeated value in array.
+ 5. find out 2nd min elements in array.
+

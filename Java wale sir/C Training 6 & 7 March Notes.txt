@@ -1,0 +1,1253 @@
+#define MAX 10
+void main()
+{
+    int ar[MAX],i,j;
+    int fst,sec = 0;
+    clrscr();
+    for(i=0;i<MAX;i++)
+    {
+     n:
+	printf("Plz Enter value for ar[%d] : ",i);
+	scanf("%d",&ar[i]);
+	for(j=0;j<i;j++)
+	{
+	   if(ar[i] == ar[j])
+	   {
+	     printf("\n\n Value already exist, re-enter plz...\n");
+	     goto n;
+	   }
+	}
+    }
+    printf("\nElements r - ");
+    for(i=0;i<MAX;i++)
+      printf("%d, ",i[ar]);
+
+    fst = ar[0];
+    for(i=1;i<MAX;i++)
+    {
+	if(fst < ar[i])
+	{
+	    sec = fst;
+	    fst = ar[i];
+	}
+	else if(fst > ar[i] && sec < ar[i])
+	   sec = ar[i];
+    }
+    printf("\n\n\n 1st max - %d \n\n 2nd max - %d",fst,sec);
+    getch();
+}
+
+   sec = 0; 
+   third = 0
+   fst = ar[0];
+   for(i=1;i<MAX;i++)
+   {
+      if(fst < ar[i])
+      {
+        third = sec;
+        sec = fst;
+        fst = ar[i];
+      }
+      else if(fst > ar[i] && sec < ar[i])
+      {
+         third = sec;
+         sec = ar[i]; 
+      }
+      else if(fst > ar[i] && sec > ar[i] && third < ar[i])
+         third = ar[i]; 
+   }
+
+  String handling in C & C++ - 
+
+   String - group of chars, for store string in C we have
+     concept of char array. 
+
+    Java -   String s = "Gaurav"; 
+             char ar[] = toCharArray(); 
+
+   how top work with String - 
+
+    char ar[10];      ar = "Gaurav"; - wrong 
+ 1. strcpy(ar,"Gaurav");
+      but in java we can initialize string with = operator.
+        String s;   s = "Gaurav"; - valid in java 
+ 2. strcat() - for String concat
+
+     ar = "Gaurav"; - we want to add kumar in ar array
+     strcat(ar," Kumar"); 
+      ar = "Gaurav Kumar";
+
+    but in java for String concat we can use  += or + operator
+
+      s = "Gaurav"; 
+      s = s + " Kumar";   s += " Kumar"; 
+
+ 3. strlen() - for count String length
+
+     ar = "Gaurav"; 
+     int x = strlen(ar);    x = 6
+
+   but in java we have length() function
+
+     for count length in java
+
+      length - keyword,find out the array length
+      length() - function, find out the String length
+      size()) - find out collection length/size 
+        ArrayList, Vector, LinkedList, HashSet, TreeSet, HashMap
+
+   findout the String length without strlen() function      
+
+     ctr=0; 
+     while(ar[ctr]!= 0)   while(ar[ctr]!= '\0') - whille string not end of string.
+        ctr++; 
+
+  4. strupr() - for convert String into upper case 
+       in Java - toUpperCase()
+
+     ar = "Gaurav"; 
+     strupr(ar);    ar = "GAURAV"; 
+
+ without function - 
+
+     ctr = 0;
+     while(ar[ctr]!='\0')
+     {
+       if(ar[ctr] >= 'a' && ar[ctr] <= 'z')
+          ar[ctr] = ar[ctr] - 32; 
+       ctr++;
+     }
+
+  5. strlwr() - for convert String into lower case
+       in Java - toLowerCase()
+
+     ar = "Gaurav Kumar"; 
+     strlwr(ar);    ar = "gaurav kumar"; 
+
+ without function - 
+
+     ctr = 0;
+     while(ar[ctr]!='\0')
+     {
+       if(ar[ctr] >= 'A' && ar[ctr] <= 'Z')
+          ar[ctr] = ar[ctr] + 32; 
+       ctr++;
+     }
+
+ for toggle case - - Gaurav Kumar  , output gAURAV kUMAR
+
+
+     ctr = 0;
+     while(ar[ctr]!='\0')
+     {
+       if(ar[ctr] >= 'A' && ar[ctr] <= 'Z')
+          ar[ctr] = ar[ctr] + 32; 
+       else if(ar[ctr] >= 'a' && ar[ctr] <= 'z')
+          ar[ctr] = ar[ctr] - 32; 
+       ctr++;
+     }
+
+ 6- strrev() - for String reverse - 
+     in Java - no method in String class, but in StringBuffer
+               we have. 
+   ar = "gaurav"; 
+   strrev(ar);   ar = "varuag"; 
+
+ String reverse without any function
+
+  ctr = 0;
+  while(ar[ctr]!='\0') // loop for count String length.
+     ctr ++; 
+
+  for(i=0,j=ctr-1;i<ctr;i++,j--); // loop for String reverse 
+    arr[i] = ar[j];
+  arr[i]= '\0'; 
+
+  ar = "gaurav" , ctr = 6
+                           i = 0   j = 4 
+  ar[0] = 'g';        arr[i=0] = ar[j = 5]= 'v'
+  ar[1] = 'a';        arr[i=1] = ar[j = 4]= 'a'
+  ar[2] = 'u';        arr[i=2] = ar[j = 3]= 'r'
+  ar[3] = 'r';        arr[i=3] = ar[j = 2]= 'u'
+  ar[4] = 'a';        arr[i=4] = ar[j = 1]= 'a'
+  ar[5] = 'v';        arr[i=5] = ar[j = 0]= 'g'
+  ar[6] = '\0';       arr[i=6] = '\0'; 
+
+
+ Check String is palindrome or not, with function or without function. 
+
+   char ar[20],rev[20];
+   strcpy(ar,"malayalam"); 
+   strcpy(rev,ar); 
+   strrev(rev); 
+   if(strcmp(ar,rev)==0)
+      printf("String is Palindrome");
+   else
+      printf("String is not Palindrome"); 
+
+
+ without function - with single array
+   ar = "malayalam";
+
+ 1. count length of String 
+ 2. compare char by char from left & right 
+
+    len = 0;
+    while(ar[len]!= '\0')
+      len++; 
+                                malayalam 
+   ctr = 9
+   flag = 1;
+   for(i=0;i<=len/2;i++)
+   {
+       if(ar[i] != ar[len-1-i]) 
+       {
+           flag = 0;
+           break;
+       }
+   }
+   if(flag)
+      printf("String is Palindrome");
+   else
+      printf("String is not Palindrome"); 
+
+// program for check String is Palindrome or not - with own algo
+void main()
+{
+  char str[] = "malayalam";
+  int i,len = 0,flag=1;
+  clrscr();
+  while(str[len] != '\0')
+    len++;
+
+   for(i = 0; i <= len/2; i++) // length ke half tak 
+   {
+     if(str[i] != str[len - i - 1])
+     {
+	flag = 0;
+	break;
+     }
+   }
+   if(flag)
+     printf("\n %s is a Palindrome String", str);
+   else
+     printf("\n %s is Not a Palindrome String", str);
+   getch();
+}   
+
+   malayalam
+   012345678
+
+  len = 9; 
+
+  compare - 
+      str[i=0] = str[(len=9)-(i=0)-1 = 8]  compare - m = m 
+      str[i=1] = str[(len=9)-(i=1)-1 = 7]  compare - a = a
+      str[i=2] = str[(len=9)-(i=2)-1 = 6]  compare - l = l
+      str[i=3] = str[(len=9)-(i=3)-1 = 5]  compare - a = a
+      str[i=4] = str[(len=9)-(i=4)-1 = 4]  compare - y = y
+
+ 
+
+ for String compare we have 4 functions 
+
+   1. strcmp(str1,str2) - compare 2 String with case
+   2. strcmpi(str1,str2) - compare 2 String with ignore case.
+   3. strncmp(str1,str2,noc) - compare 2 String with no of chars - case sensitive 
+   4. strncmpi(str1,str2,noc) - compare 2 String with no of chars -  case insensitive 
+
+     ** all 4 functions return type of int. return diff of ASCII code 
+
+          return - 0 - if both strings r equals
+                 +ve - if 1st string is greater
+                 -ve - if 1st string is small.
+
+ for string compare in java we have 
+
+   boolean equals() / int compareTo() 
+
+   ar = "hiet@"
+
+   if(strmp(ar,"hiet@")==0) 
+      printf("Valid password");
+   else
+      printf("Invalid Password"); 
+
+ compare 2 String without using inbuild function 
+   
+  for(i = 0; str1[i] == str2[i] && str1[i] != '\0'; i++);
+   if(str1[i] > str2[i])
+      printf("\n str1 is Greator than str2");
+    else if(str1[i] < str2[i])
+      printf("\n str2 is Greator than str1");
+    else
+      printf("\n str1 is Equal to str2");
+ 
+ -- using while loop -
+
+   i=0;
+   while(str1[i] == str2[i] && str1[i] == '\0')
+     i++;
+   if(str1[i] > str2[i])
+     printf("\n str1 is Greator than str2");
+   else if(str1[i] < str2[i])
+     printf("\n str2 is Greator than str1");
+   else
+     printf("\n str1 is Equal to str2");
+
+// profram for Input 2 Strings & compare both string without any function
+void main()
+{
+   char str1[20],str2[20];
+   int i=0;
+   clrscr();
+   printf("Plz Enter 2 Strings : ");
+   scanf("%s %s",str1,str2);
+   for(i = 0; str1[i] == str2[i] && str1[i] != '\0'; i++);
+   printf("str[%d] = %c, str2[%d] = %c",i,str1[i],i,str2[i]) ;
+   if(str1[i] > str2[i])
+      printf("\n str1 is Greator than str2");
+    else if(str1[i] < str2[i])
+      printf("\n str2 is Greator than str1");
+    else
+      printf("\n str1 is Equal to str2");
+   getch();
+}
+
+_________________________________________________________________
+
+// count repeat chars.
+void main()
+{
+  char ar[] = {"hello friends, i am mayank here, i am pursuing btech from hiet college ghaziabad"};
+  int count[26] = {0};
+  int x,ctr=0;
+  clrscr();
+  while(ar[ctr]!='\0')
+  {
+    if(ar[ctr]>='a' && ar[ctr]<='z')
+    {
+    //  printf("ar[%d] = %c, count[%d]\n",ctr,ar[ctr],ar[ctr]-'a');
+      x = ar[ctr] - 'a';  // h - 104 , a - 97
+      count[x]++;
+    //  getch();
+    }
+    ctr++;
+  }
+  for(x=0;x<26;x++)
+   if(count[x]!=0)
+    printf("%c - %d ,  \n",x+'a',count[x]);
+  getch();
+}
+
+  int count[26]; 
+   ar[0] - counting manage - a
+   ar[1] - counting manage - b
+   ar[2] - counting manage - c
+   ar[3] - counting manage - d
+
+   ar[24] - counting manage - y
+   ar[25] - counting manage - z
+
+   if(ar[ctr]>='a' && ar[ctr]<='z')  - means char b/w a to z - 
+
+    x = ar[ctr] - 97;      
+    count[x]++;       ar = "abababcbabb
+                            012345678910
+      ctr = 0 
+      ar[ctr] is b/w a to z - true - hai
+      x = ar[ctr] - a,   97 - 97;  x = 0 
+      count[x]++;   count[0]++; 1,2,3,4 
+                    b,   98 - 97  x = 1
+      count[x]++;   count[1]++; 1,2,3,4,5,6 
+
+ s = "hello friends, i am pursuing btech from hiet college ghaziabad";
+
+  output - "ghaziabad college hiet from btech pursuing am i, friends hello"
+
+  Pointer + Single Linked List 
+
+  -- C Program String reverse word by word. 
+
+  s = "hello friends, i am pursuing btech from hiet college ghaziabad";
+  output-"ghaziabad college hiet from btech pursuing am i, friends hello"
+  len = 0;
+  while(str[len] != '\0')  len++;
+  end = len - 1;  // end - contain the end of the word. 
+  for(i = len - 1; i >= 0; i--) // loop - whole String.
+  {
+     if(str[i] == ' ' || i == 0) // ' ' - mid , i==0 - 1st word  
+     {
+	if(i == 0) // FOR 1ST WORD
+	   start = 0;
+	else // FOR MID WORD. 
+	   start = i + 1;
+        for(j = start; j <= end; j++)
+          printf("%c", str[j]);
+        end = i - 1;
+        printf(" ");				
+     }
+  } 
+
+
+1st Max & 1 min 
+
+   min=ar[0];
+   max=ar[0]; 
+   for(i=1;i<MAX;i++)
+   {
+      if(min > ar[i])
+         min = ar[i];
+      if(max < ar[i])
+         max = ar[i];
+   }
+
+   printf("1st Min value - %d",min)
+   printf("1st Max value - %d",max)
+
+
+ remove mid spaces from String - 
+
+
+
+  str = "hello friends, i am pursuing btech from hiet college ghaziabad";
+  char str1[100]; 
+  int ctr=0;
+  int index=0,len=0
+  while(str[len]!='\0')
+     len++;
+  for(i=0;i<len;i++)
+     if(str[i]!=' ')
+       str1[index++] = ar[i];
+
+  print str1 
+  
+  str1 - without space string design hogi 
+
+ we have one one one String or char array
+
+ str="Andaman And Nicobar:Andhra Pradesh:Arunachal Pradesh:Assam:Bihar:Chandigarh:Chhattisgarh:Dadar And Nagar Haveli:Daman and Diu:Delhi:Goa:Gujarat:Haryana:Himachal Pradesh:Jammu and Kashmir:Jharkhand:Karnataka:Kerala:Lakshadweep:Madhya Pradesh:Maharashtra:Manipur:Meghalaya:Mizoram:Nagaland:Orissa:Puducherry:Punjab:Rajasthan:Sikkim:Tamil Nadu:Telangana:Tripura:Uttar Pradesh:Uttarakhand:West Bengal";
+
+ now we want to design state.sql file name we this data in following format  - 
+
+
+insert into tblState values('Andaman And Nicobar');
+insert into tblState values('Andhra Pradesh');
+insert into tblState values('Arunachal Pradesh');
+insert into tblState values('Assam');
+insert into tblState values('Bihar');
+insert into tblState values('Chandigarh');
+insert into tblState values('Chhattisgarh');
+insert into tblState values('Dadar And Nagar Haveli');
+insert into tblState values('Daman and Diu');
+insert into tblState values('Delhi');
+insert into tblState values('Goa');
+insert into tblState values('Gujarat');
+insert into tblState values('Haryana');
+insert into tblState values('Himachal Pradesh');
+insert into tblState values('Jammu and Kashmir');
+insert into tblState values('Jharkhand');
+insert into tblState values('Karnataka');
+insert into tblState values('Kerala');
+insert into tblState values('Lakshadweep');
+insert into tblState values('Madhya Pradesh');
+insert into tblState values('Maharashtra');
+insert into tblState values('Manipur');
+insert into tblState values('Meghalaya');
+insert into tblState values('Mizoram');
+insert into tblState values('Nagaland');
+insert into tblState values('Orissa');
+insert into tblState values('Puducherry');
+insert into tblState values('Punjab');
+insert into tblState values('Rajasthan');
+insert into tblState values('Sikkim');
+insert into tblState values('Tamil Nadu');
+insert into tblState values('Telangana');
+insert into tblState values('Tripura');
+insert into tblState values('Uttar Pradesh');
+insert into tblState values('Uttarakhand');
+insert into tblState values('West Bengal');
+
+_______________________________________________
+
+ we have state list as char array / String 
+
+ str="Andaman And Nicobar:Andhra Pradesh:Arunachal Pradesh:Assam:Bihar:Chandigarh:Chhattisgarh:Dadar And Nagar Haveli:Daman and Diu:Delhi:Goa:Gujarat:Haryana:Himachal Pradesh:Jammu and Kashmir:Jharkhand:Karnataka:Kerala:Lakshadweep:Madhya Pradesh:Maharashtra:Manipur:Meghalaya:Mizoram:Nagaland:Orissa:Puducherry:Punjab:Rajasthan:Sikkim:Tamil Nadu:Telangana:Tripura:Uttar Pradesh:Uttarakhand:West Bengal";
+ 
+ and city.txt file that contain the state's city list as String, same order of state list,
+ city.txt file already sent on group
+
+ now we want to design city.sql file name we this data in following format  -
+
+insert into tblCity values('Nicobar','Andaman And Nicobar');
+insert into tblCity values('North and Middle Andaman','Andaman And Nicobar');
+insert into tblCity values('South Andaman','Andaman And Nicobar');
+insert into tblCity values('Adilabad','Andhra Pradesh');
+insert into tblCity values('East Godavari','Andhra Pradesh');
+insert into tblCity values('Kadapa','Andhra Pradesh');
+insert into tblCity values('Krishna','Andhra Pradesh');
+insert into tblCity values('Medak','Andhra Pradesh');
+insert into tblCity values('Nizamabad','Andhra Pradesh');
+insert into tblCity values('Srikakulam','Andhra Pradesh');
+insert into tblCity values('Anantapur','Andhra Pradesh');
+insert into tblCity values('Guntur','Andhra Pradesh');
+insert into tblCity values('Karimnagar','Andhra Pradesh');
+insert into tblCity values('Kurnool','Andhra Pradesh');
+insert into tblCity values('Nalgonda','Andhra Pradesh');
+insert into tblCity values('Prakasam','Andhra Pradesh');
+insert into tblCity values('Visakhapatnam','Andhra Pradesh');
+insert into tblCity values('Khammam','Andhra Pradesh');
+insert into tblCity values('Mahabubnagar','Andhra Pradesh');
+insert into tblCity values('Nellore','Andhra Pradesh');
+insert into tblCity values('Rangareddy','Andhra Pradesh');
+insert into tblCity values('Vizianagaram','Andhra Pradesh');
+insert into tblCity values('Anjaw','Arunachal Pradesh');
+insert into tblCity values('East Kameng','Arunachal Pradesh');
+insert into tblCity values('Lohit','Arunachal Pradesh');
+insert into tblCity values('Papum Pare','Arunachal Pradesh');
+insert into tblCity values('Ita Nagar','Arunachal Pradesh');
+insert into tblCity values('Upper Siang','Arunachal Pradesh');
+insert into tblCity values('West Siang','Arunachal Pradesh');
+insert into tblCity values('Changlang','Arunachal Pradesh');
+insert into tblCity values('East Siang','Arunachal Pradesh');
+insert into tblCity values('Lower Dibang Valley','Arunachal Pradesh');
+insert into tblCity values('Tawang','Arunachal Pradesh');
+insert into tblCity values('Upper Subansiri','Arunachal Pradesh');
+insert into tblCity values('Dibang Valley','Arunachal Pradesh');
+insert into tblCity values('Kurung Kumey','Arunachal Pradesh');
+insert into tblCity values('Lower Subansiri','Arunachal Pradesh');
+insert into tblCity values('Tirap','Arunachal Pradesh');
+insert into tblCity values('West Kameng','Arunachal Pradesh');
+insert into tblCity values('Baksa','Assam');
+insert into tblCity values('Dhemaji','Assam');
+insert into tblCity values('Goalpara','Assam');
+insert into tblCity values('Jorhat','Assam');
+insert into tblCity values('Karbi','Assam');
+insert into tblCity values('Anglong','Assam');
+insert into tblCity values('Lakhimpur','Assam');
+insert into tblCity values('Nalbari','Assam');
+insert into tblCity values('Sonitpur','Assam');
+insert into tblCity values('Barpeta','Assam');
+insert into tblCity values('Chirang','Assam');
+insert into tblCity values('Dhubri','Assam');
+insert into tblCity values('Golaghat','Assam');
+insert into tblCity values('Kamrup','Assam');
+insert into tblCity values('Karimganj	Morigaon','Assam');
+insert into tblCity values('North','Assam');
+insert into tblCity values('Cachar','Assam');
+insert into tblCity values('Hills','Assam');
+insert into tblCity values('Tinsukia','Assam');
+insert into tblCity values('Bongaigaon','Assam');
+insert into tblCity values('Darrang','Assam');
+insert into tblCity values('Dibrugarh','Assam');
+insert into tblCity values('Hailakandi','Assam');
+insert into tblCity values('Metropolitan','Assam');
+insert into tblCity values('Kokrajhar','Assam');
+insert into tblCity values('Nagaon','Assam');
+insert into tblCity values('Sivasagar','Assam');
+insert into tblCity values('Udalguri','Assam');
+insert into tblCity values('Araria','Bihar');
+insert into tblCity values('Banka','Bihar');
+insert into tblCity values('Bhojpur','Bihar');
+insert into tblCity values('East','Bihar');
+insert into tblCity values('Jamui','Bihar');
+insert into tblCity values('Katihar','Bihar');
+insert into tblCity values('Lakhisarai','Bihar');
+insert into tblCity values('Munger','Bihar');
+insert into tblCity values('Nawada','Bihar');
+insert into tblCity values('Rohtas','Bihar');
+insert into tblCity values('Saran','Bihar');
+insert into tblCity values('Sitamarhi','Bihar');
+insert into tblCity values('Vaishali','Bihar');
+insert into tblCity values('Arwal','Bihar');
+insert into tblCity values('Begusarai','Bihar');
+insert into tblCity values('Buxar','Bihar');
+insert into tblCity values('Aya','Bihar');
+insert into tblCity values('Jehanabad','Bihar');
+insert into tblCity values('Khagaria','Bihar');
+insert into tblCity values('Madhepura','Bihar');
+insert into tblCity values('Muzaffarpur','Bihar');
+insert into tblCity values('Patna','Bihar');
+insert into tblCity values('Saharsa','Bihar');
+insert into tblCity values('Sheikhpura','Bihar');
+insert into tblCity values('Siwan','Bihar');
+insert into tblCity values('West','Bihar');
+insert into tblCity values('Champaran','Bihar');
+insert into tblCity values('Aurangabad','Bihar');
+insert into tblCity values('Bhagalpur','Bihar');
+insert into tblCity values('Darbhanga','Bihar');
+insert into tblCity values('Gopalganj','Bihar');
+insert into tblCity values('Kaimur (Bhabua)','Bihar');
+insert into tblCity values('Kishanganj','Bihar');
+insert into tblCity values('Madhubani','Bihar');
+insert into tblCity values('Nalanda','Bihar');
+insert into tblCity values('Purnea','Bihar');
+insert into tblCity values('Samastipur','Bihar');
+insert into tblCity values('Sheohar','Bihar');
+insert into tblCity values('Supaul','Bihar');
+insert into tblCity values('Chandigarh','Chandigarh');
+insert into tblCity values('Balod','Chhattisgarh');
+insert into tblCity values('Baloda Bazar','Chhattisgarh');
+insert into tblCity values('Bastar','Chhattisgarh');
+insert into tblCity values('Bemetara','Chhattisgarh');
+insert into tblCity values('Birjapur','Chhattisgarh');
+insert into tblCity values('Billaspur','Chhattisgarh');
+insert into tblCity values('Dantewada','Chhattisgarh');
+insert into tblCity values('Dhamtari','Chhattisgarh');
+insert into tblCity values('Durg','Chhattisgarh');
+insert into tblCity values('Gariaband','Chhattisgarh');
+insert into tblCity values('Jashpur','Chhattisgarh');
+insert into tblCity values('Janjgir-Champa','Chhattisgarh');
+insert into tblCity values('Kondagaon','Chhattisgarh');
+insert into tblCity values('Korba','Chhattisgarh');
+insert into tblCity values('Koriya','Chhattisgarh');
+insert into tblCity values('Kanker','Chhattisgarh');
+insert into tblCity values('Kabirdham','Chhattisgarh');
+insert into tblCity values('Mahasamund','Chhattisgarh');
+insert into tblCity values('Mungeli','Chhattisgarh');
+insert into tblCity values('Narayanpur','Chhattisgarh');
+insert into tblCity values('Raigarh','Chhattisgarh');
+insert into tblCity values('Rajnandgaon','Chhattisgarh');
+insert into tblCity values('Raipur','Chhattisgarh');
+insert into tblCity values('Surajpur','Chhattisgarh');
+insert into tblCity values('Sukma','Chhattisgarh');
+insert into tblCity values('Surguja','Chhattisgarh');
+insert into tblCity values('Dadar','Dadar And Nagar Haveli');
+insert into tblCity values('Nagar Haveli','Dadar And Nagar Haveli');
+insert into tblCity values('Daman','Daman and Diu');
+insert into tblCity values('Diu','Daman and Diu');
+insert into tblCity values('Central Delhi','Delhi');
+insert into tblCity values('North Delhi','Delhi');
+insert into tblCity values('South Delhi','Delhi');
+insert into tblCity values('East Delhi','Delhi');
+insert into tblCity values('North East','Delhi');
+insert into tblCity values('Delhi South','Delhi');
+insert into tblCity values('New Delhi','Delhi');
+insert into tblCity values('North West Delhi','Delhi');
+insert into tblCity values('West Delhi','Delhi');
+insert into tblCity values('North Goa','Goa');
+insert into tblCity values('South Goa','Goa');
+insert into tblCity values('Ahmedabad','Gujarat');
+insert into tblCity values('Banaskantha','Gujarat');
+insert into tblCity values('Dahod','Gujarat');
+insert into tblCity values('Jamnagar','Gujarat');
+insert into tblCity values('Kutch','Gujarat');
+insert into tblCity values('Navsari','Gujarat');
+insert into tblCity values('Porbandar','Gujarat');
+insert into tblCity values('Surat','Gujarat');
+insert into tblCity values('Valsad','Gujarat');
+insert into tblCity values('Amreli','Gujarat');
+insert into tblCity values('Bharuch','Gujarat');
+insert into tblCity values('Dang','Gujarat');
+insert into tblCity values('Junagadh','Gujarat');
+insert into tblCity values('Mehsana','Gujarat');
+insert into tblCity values('Panchmahals','Gujarat');
+insert into tblCity values('Rajkot','Gujarat');
+insert into tblCity values('Surendranagar','Gujarat');
+insert into tblCity values('Anand','Gujarat');
+insert into tblCity values('Bhavnagar','Gujarat');
+insert into tblCity values('Gandhinagar','Gujarat');
+insert into tblCity values('Kheda','Gujarat');
+insert into tblCity values('Narmada','Gujarat');
+insert into tblCity values('Patan','Gujarat');
+insert into tblCity values('Sabarkantha','Gujarat');
+insert into tblCity values('Vadodara','Gujarat');
+insert into tblCity values('Ambala','Haryana');
+insert into tblCity values('Fatehabad','Haryana');
+insert into tblCity values('Jhajjar','Haryana');
+insert into tblCity values('Karnal','Haryana');
+insert into tblCity values('Mewat','Haryana');
+insert into tblCity values('Panipat','Haryana');
+insert into tblCity values('Sirsa','Haryana');
+insert into tblCity values('Bhiwani','Haryana');
+insert into tblCity values('Gurgaon','Haryana');
+insert into tblCity values('Jind','Haryana');
+insert into tblCity values('Kurukshetra','Haryana');
+insert into tblCity values('Palwal','Haryana');
+insert into tblCity values('Rewari','Haryana');
+insert into tblCity values('Sonipat','Haryana');
+insert into tblCity values('Faridabad','Haryana');
+insert into tblCity values('Hisar','Haryana');
+insert into tblCity values('Kaithal','Haryana');
+insert into tblCity values('Mahendragarh','Haryana');
+insert into tblCity values('Panchkula','Haryana');
+insert into tblCity values('Rohtak','Haryana');
+insert into tblCity values('Yamunanagar','Haryana');
+insert into tblCity values('Bilaspur','Himachal Pradesh');
+insert into tblCity values('Kangra','Himachal Pradesh');
+insert into tblCity values('Lahaul And Spiti','Himachal Pradesh');
+insert into tblCity values('Sirmaur','Himachal Pradesh');
+insert into tblCity values('Chamba','Himachal Pradesh');
+insert into tblCity values('Kinnaur','Himachal Pradesh');
+insert into tblCity values('Mandi','Himachal Pradesh');
+insert into tblCity values('Solan','Himachal Pradesh');
+insert into tblCity values('Hamirpur','Himachal Pradesh');
+insert into tblCity values('Kullu','Himachal Pradesh');
+insert into tblCity values('Shimla','Himachal Pradesh');
+insert into tblCity values('Una','Himachal Pradesh');
+insert into tblCity values('Anantnag','Jammu and Kashmir');
+insert into tblCity values('Doda','Jammu and Kashmir');
+insert into tblCity values('Kathua','Jammu and Kashmir');
+insert into tblCity values('Poonch','Jammu and Kashmir');
+insert into tblCity values('Samba','Jammu and Kashmir');
+insert into tblCity values('Baramulla','Jammu and Kashmir');
+insert into tblCity values('Jammu','Jammu and Kashmir');
+insert into tblCity values('Kupwara','Jammu and Kashmir');
+insert into tblCity values('Pulwama','Jammu and Kashmir');
+insert into tblCity values('Srinagar','Jammu and Kashmir');
+insert into tblCity values('Budgam','Jammu and Kashmir');
+insert into tblCity values('Kargil','Jammu and Kashmir');
+insert into tblCity values('Leh','Jammu and Kashmir');
+insert into tblCity values('Rajouri','Jammu and Kashmir');
+insert into tblCity values('Udhampur','Jammu and Kashmir');
+insert into tblCity values('Bokaro','Jharkhand');
+insert into tblCity values('Dhanbad','Jharkhand');
+insert into tblCity values('Garhwa','Jharkhand');
+insert into tblCity values('Gumla','Jharkhand');
+insert into tblCity values('Khunti','Jharkhand');
+insert into tblCity values('Lohardaga','Jharkhand');
+insert into tblCity values('Ramgarh','Jharkhand');
+insert into tblCity values('Seraikela-Kharsawan','Jharkhand');
+insert into tblCity values('Chatra','Jharkhand');
+insert into tblCity values('Dumka','Jharkhand');
+insert into tblCity values('Giridih','Jharkhand');
+insert into tblCity values('Hazaribag','Jharkhand');
+insert into tblCity values('Koderma','Jharkhand');
+insert into tblCity values('Pakur','Jharkhand');
+insert into tblCity values('Ranchi','Jharkhand');
+insert into tblCity values('Simdega','Jharkhand');
+insert into tblCity values('Deoghar','Jharkhand');
+insert into tblCity values('EastSinghbhum','Jharkhand');
+insert into tblCity values('Godda','Jharkhand');
+insert into tblCity values('Jamtara','Jharkhand');
+insert into tblCity values('Latehar','Jharkhand');
+insert into tblCity values('Palamu','Jharkhand');
+insert into tblCity values('Sahibganj','Jharkhand');
+insert into tblCity values('West Singhbhum','Jharkhand');
+insert into tblCity values('Bagalkot','Karnataka');
+insert into tblCity values('Belgaum','Karnataka');
+insert into tblCity values('Bijapur','Karnataka');
+insert into tblCity values('Chikballapur','Karnataka');
+insert into tblCity values('Davangere','Karnataka');
+insert into tblCity values('Gulbarga','Karnataka');
+insert into tblCity values('Kodagu','Karnataka');
+insert into tblCity values('Mandya','Karnataka');
+insert into tblCity values('Shimoga','Karnataka');
+insert into tblCity values('Uttara Kannada','Karnataka');
+insert into tblCity values('Bangalore','Karnataka');
+insert into tblCity values('Bellary','Karnataka');
+insert into tblCity values('Chamrajanagar	','Karnataka');
+insert into tblCity values('Chitradurga','Karnataka');
+insert into tblCity values('Dharwad','Karnataka');
+insert into tblCity values('Hassan','Karnataka');
+insert into tblCity values('Kolar','Karnataka');
+insert into tblCity values('Mysore','Karnataka');
+insert into tblCity values('Tumkur','Karnataka');
+insert into tblCity values('Bangalore Rural','Karnataka');
+insert into tblCity values('Bidar','Karnataka');
+insert into tblCity values('Chickmagalur','Karnataka');
+insert into tblCity values('Dakshina','Karnataka');
+insert into tblCity values('Kannada','Karnataka');
+insert into tblCity values('Gadag','Karnataka');
+insert into tblCity values('Haveri','Karnataka');
+insert into tblCity values('Koppal','Karnataka');
+insert into tblCity values('Raichur','Karnataka');
+insert into tblCity values('Udupi','Karnataka');
+insert into tblCity values('Alappuzha','Kerala');
+insert into tblCity values('Kannur','Kerala');
+insert into tblCity values('Kottayam','Kerala');
+insert into tblCity values('Palakkad','Kerala');
+insert into tblCity values('Thrissur','Kerala');
+insert into tblCity values('Ernakulam','Kerala');
+insert into tblCity values('Kasargod','Kerala');
+insert into tblCity values('Kozhikode','Kerala');
+insert into tblCity values('Pathanamthitta','Kerala');
+insert into tblCity values('Wayanad','Kerala');
+insert into tblCity values('Idukki','Kerala');
+insert into tblCity values('Kollam','Kerala');
+insert into tblCity values('Malappuram','Kerala');
+insert into tblCity values('Thiruvananthapuram','Kerala');
+insert into tblCity values('Lakshadweep','Lakshadweep');
+insert into tblCity values('Alirajpur','Madhya Pradesh');
+insert into tblCity values('Balaghat','Madhya Pradesh');
+insert into tblCity values('Bhind','Madhya Pradesh');
+insert into tblCity values('Chhatarpur','Madhya Pradesh');
+insert into tblCity values('Datia','Madhya Pradesh');
+insert into tblCity values('Dindori','Madhya Pradesh');
+insert into tblCity values('Harda','Madhya Pradesh');
+insert into tblCity values('Jabalpur','Madhya Pradesh');
+insert into tblCity values('Khandwa','Madhya Pradesh');
+insert into tblCity values('Mandsaur','Madhya Pradesh');
+insert into tblCity values('Neemuch','Madhya Pradesh');
+insert into tblCity values('Rajgarh','Madhya Pradesh');
+insert into tblCity values('Seoni','Madhya Pradesh');
+insert into tblCity values('Sheopur','Madhya Pradesh');
+insert into tblCity values('Singrauli','Madhya Pradesh');
+insert into tblCity values('Umaria','Madhya Pradesh');
+insert into tblCity values('Anuppur','Madhya Pradesh');
+insert into tblCity values('Barwani','Madhya Pradesh');
+insert into tblCity values('Chhindwara','Madhya Pradesh');
+insert into tblCity values('Dewas','Madhya Pradesh');
+insert into tblCity values('Guna','Madhya Pradesh');
+insert into tblCity values('Hoshangabad','Madhya Pradesh');
+insert into tblCity values('Jhabua','Madhya Pradesh');
+insert into tblCity values('Khargone','Madhya Pradesh');
+insert into tblCity values('Morena','Madhya Pradesh');
+insert into tblCity values('Panna','Madhya Pradesh');
+insert into tblCity values('Ratlam','Madhya Pradesh');
+insert into tblCity values('Satna','Madhya Pradesh');
+insert into tblCity values('Shahdol','Madhya Pradesh');
+insert into tblCity values('Shivpuri','Madhya Pradesh');
+insert into tblCity values('Tikamgarh','Madhya Pradesh');
+insert into tblCity values('Vidisha','Madhya Pradesh');
+insert into tblCity values('Ashoknagar','Madhya Pradesh');
+insert into tblCity values('Betul','Madhya Pradesh');
+insert into tblCity values('Burhanpur','Madhya Pradesh');
+insert into tblCity values('Damoh','Madhya Pradesh');
+insert into tblCity values('Dhar','Madhya Pradesh');
+insert into tblCity values('Gwalior','Madhya Pradesh');
+insert into tblCity values('Indore','Madhya Pradesh');
+insert into tblCity values('Katni','Madhya Pradesh');
+insert into tblCity values('Mandla','Madhya Pradesh');
+insert into tblCity values('Narsinghpur','Madhya Pradesh');
+insert into tblCity values('Raisen','Madhya Pradesh');
+insert into tblCity values('Rewa','Madhya Pradesh');
+insert into tblCity values('Sehore','Madhya Pradesh');
+insert into tblCity values('Shajapur','Madhya Pradesh');
+insert into tblCity values('Sidhi','Madhya Pradesh');
+insert into tblCity values('Ujjain','Madhya Pradesh');
+insert into tblCity values('Ahmednagar','Maharashtra');
+insert into tblCity values('Buldhana','Maharashtra');
+insert into tblCity values('Gadchiroli','Maharashtra');
+insert into tblCity values('Jalgaon','Maharashtra');
+insert into tblCity values('Latur','Maharashtra');
+insert into tblCity values('Nagpur','Maharashtra');
+insert into tblCity values('Nashik','Maharashtra');
+insert into tblCity values('Pune','Maharashtra');
+insert into tblCity values('Sangli','Maharashtra');
+insert into tblCity values('Solapur','Maharashtra');
+insert into tblCity values('Washim','Maharashtra');
+insert into tblCity values('Akola','Maharashtra');
+insert into tblCity values('Beed','Maharashtra');
+insert into tblCity values('Chandrapur','Maharashtra');
+insert into tblCity values('Gondia','Maharashtra');
+insert into tblCity values('Jalna','Maharashtra');
+insert into tblCity values('MumbaiCity','Maharashtra');
+insert into tblCity values('Nanded','Maharashtra');
+insert into tblCity values('Osmanabad','Maharashtra');
+insert into tblCity values('Raigad','Maharashtra');
+insert into tblCity values('Satara','Maharashtra');
+insert into tblCity values('Thane','Maharashtra');
+insert into tblCity values('Yavatmal','Maharashtra');
+insert into tblCity values('Amravati','Maharashtra');
+insert into tblCity values('Bhandara','Maharashtra');
+insert into tblCity values('Dhule','Maharashtra');
+insert into tblCity values('Hingoli','Maharashtra');
+insert into tblCity values('Kolhapur','Maharashtra');
+insert into tblCity values('Mumbai Suburban','Maharashtra');
+insert into tblCity values('Nandurbar','Maharashtra');
+insert into tblCity values('Parbhani','Maharashtra');
+insert into tblCity values('Ratnagiri','Maharashtra');
+insert into tblCity values('Sindhudurg','Maharashtra');
+insert into tblCity values('Wardha','Maharashtra');
+insert into tblCity values('Bishnupur','Manipur');
+insert into tblCity values('Imphal East','Manipur');
+insert into tblCity values('Tamenglong','Manipur');
+insert into tblCity values('Chandel','Manipur');
+insert into tblCity values('Imphal West','Manipur');
+insert into tblCity values('Thoubal','Manipur');
+insert into tblCity values('Churachandpur','Manipur');
+insert into tblCity values('Senapati','Manipur');
+insert into tblCity values('Ukhrul','Manipur');
+insert into tblCity values('Meghalaya','Meghalaya');
+insert into tblCity values('Aizawl','Mizoram');
+insert into tblCity values('Lawngtlai','Mizoram');
+insert into tblCity values('Saiha','Mizoram');
+insert into tblCity values('Champhai','Mizoram');
+insert into tblCity values('Lunglei','Mizoram');
+insert into tblCity values('Serchhip','Mizoram');
+insert into tblCity values('Kolasib','Mizoram');
+insert into tblCity values('Mamit','Mizoram');
+insert into tblCity values('Dimapur','Nagaland');
+insert into tblCity values('Longleng','Nagaland');
+insert into tblCity values('Peren','Nagaland');
+insert into tblCity values('Wokha','Nagaland');
+insert into tblCity values('Kephrie','Nagaland');
+insert into tblCity values('Mokokchung','Nagaland');
+insert into tblCity values('Phek','Nagaland');
+insert into tblCity values('Zunheboto','Nagaland');
+insert into tblCity values('Kohima','Nagaland');
+insert into tblCity values('Mon','Nagaland');
+insert into tblCity values('Tuensang','Nagaland');
+insert into tblCity values('Angul','Orissa');
+insert into tblCity values('Bargarh','Orissa');
+insert into tblCity values('Cuttack','Orissa');
+insert into tblCity values('Gajapati','Orissa');
+insert into tblCity values('Jajpur','Orissa');
+insert into tblCity values('Kandhamal','Orissa');
+insert into tblCity values('Khordha','Orissa');
+insert into tblCity values('Mayurbhanj','Orissa');
+insert into tblCity values('Nuapada','Orissa');
+insert into tblCity values('Sambalpur','Orissa');
+insert into tblCity values('Balangir','Orissa');
+insert into tblCity values('Bhadrak','Orissa');
+insert into tblCity values('Deogarh','Orissa');
+insert into tblCity values('Ganjam','Orissa');
+insert into tblCity values('Jharsuguda','Orissa');
+insert into tblCity values('Kendrapara','Orissa');
+insert into tblCity values('Nabarangpur','Orissa');
+insert into tblCity values('Puri','Orissa');
+insert into tblCity values('Subarnapur','Orissa');
+insert into tblCity values('Balasore','Orissa');
+insert into tblCity values('Boudh','Orissa');
+insert into tblCity values('Dhenkanal','Orissa');
+insert into tblCity values('Jagatsinghapur','Orissa');
+insert into tblCity values('Kalahandi','Orissa');
+insert into tblCity values('Kendujhar','Orissa');
+insert into tblCity values('Malkangiri','Orissa');
+insert into tblCity values('Nayagarh','Orissa');
+insert into tblCity values('Rayagada','Orissa');
+insert into tblCity values('Sundargarh','Orissa');
+insert into tblCity values('Karaikal','Puducherry');
+insert into tblCity values('Yanam','Puducherry');
+insert into tblCity values('Mahe','Puducherry');
+insert into tblCity values('Pondicherry','Puducherry');
+insert into tblCity values('Amritsar','Punjab');
+insert into tblCity values('Faridkot','Punjab');
+insert into tblCity values('Kapurthala','Punjab');
+insert into tblCity values('Moga','Punjab');
+insert into tblCity values('Patiala','Punjab');
+insert into tblCity values('SAS Nagar','Punjab');
+insert into tblCity values('Barnala','Punjab');
+insert into tblCity values('Fatehgarh','Punjab');
+insert into tblCity values('Sahib','Punjab');
+insert into tblCity values('Hoshiarpur','Punjab');
+insert into tblCity values('Ludhiana','Punjab');
+insert into tblCity values('Muktsar','Punjab');
+insert into tblCity values('Rupnagar','Punjab');
+insert into tblCity values('TarnTaran','Punjab');
+insert into tblCity values('Bathinda','Punjab');
+insert into tblCity values('Ferozepur','Punjab');
+insert into tblCity values('Jalandhar','Punjab');
+insert into tblCity values('Mansa','Punjab');
+insert into tblCity values('Nawanshahr','Punjab');
+insert into tblCity values('Sangrur','Punjab');
+insert into tblCity values('Ajmer','Rajasthan');
+insert into tblCity values('Baran','Rajasthan');
+insert into tblCity values('Bhilwara','Rajasthan');
+insert into tblCity values('Dholpur','Rajasthan');
+insert into tblCity values('Jaipur','Rajasthan');
+insert into tblCity values('Jhalawar','Rajasthan');
+insert into tblCity values('Karauli','Rajasthan');
+insert into tblCity values('Pali','Rajasthan');
+insert into tblCity values('Sawai Madhopur','Rajasthan');
+insert into tblCity values('Sri Ganganagar','Rajasthan');
+insert into tblCity values('Alwar','Rajasthan');
+insert into tblCity values('Barmer','Rajasthan');
+insert into tblCity values('Bikaner','Rajasthan');
+insert into tblCity values('Churu','Rajasthan');
+insert into tblCity values('Dungarpur','Rajasthan');
+insert into tblCity values('Jaisalmer','Rajasthan');
+insert into tblCity values('Jhunjhunu','Rajasthan');
+insert into tblCity values('Kota','Rajasthan');
+insert into tblCity values('Sikar','Rajasthan');
+insert into tblCity values('Tonk','Rajasthan');
+insert into tblCity values('Banswara','Rajasthan');
+insert into tblCity values('Bharatpur','Rajasthan');
+insert into tblCity values('Bundi','Rajasthan');
+insert into tblCity values('Dausa','Rajasthan');
+insert into tblCity values('Hanumangarh','Rajasthan');
+insert into tblCity values('Jalore','Rajasthan');
+insert into tblCity values('Jodhpur','Rajasthan');
+insert into tblCity values('Nagaur','Rajasthan');
+insert into tblCity values('Rajsamand','Rajasthan');
+insert into tblCity values('Sirohi','Rajasthan');
+insert into tblCity values('Udaipur','Rajasthan');
+insert into tblCity values('Sikkim','Sikkim');
+insert into tblCity values('Ariyalur','Tamil Nadu');
+insert into tblCity values('Cuddalore','Tamil Nadu');
+insert into tblCity values('Karur','Tamil Nadu');
+insert into tblCity values('Nagapattinam','Tamil Nadu');
+insert into tblCity values('Pudukkottai','Tamil Nadu');
+insert into tblCity values('Sivaganga','Tamil Nadu');
+insert into tblCity values('Theni','Tamil Nadu');
+insert into tblCity values('Tirunelveli','Tamil Nadu');
+insert into tblCity values('Tiruvarur','Tamil Nadu');
+insert into tblCity values('Virudhunagar','Tamil Nadu');
+insert into tblCity values('Chennai','Tamil Nadu');
+insert into tblCity values('Dharmapuri','Tamil Nadu');
+insert into tblCity values('Kanchipuram','Tamil Nadu');
+insert into tblCity values('Krishnagiri','Tamil Nadu');
+insert into tblCity values('Namakkal','Tamil Nadu');
+insert into tblCity values('Ramanathapuram','Tamil Nadu');
+insert into tblCity values('Thanjavur','Tamil Nadu');
+insert into tblCity values('Thoothukudi','Tamil Nadu');
+insert into tblCity values('Tiruvallur','Tamil Nadu');
+insert into tblCity values('Vellore','Tamil Nadu');
+insert into tblCity values('Coimbatore','Tamil Nadu');
+insert into tblCity values('Dindigul','Tamil Nadu');
+insert into tblCity values('Kanyakumari','Tamil Nadu');
+insert into tblCity values('Madurai','Tamil Nadu');
+insert into tblCity values('Perambalur','Tamil Nadu');
+insert into tblCity values('Salem','Tamil Nadu');
+insert into tblCity values('The Nilgiris','Tamil Nadu');
+insert into tblCity values('Tiruchirappalli','Tamil Nadu');
+insert into tblCity values('Tiruvannamalai','Tamil Nadu');
+insert into tblCity values('Viluppuram','Tamil Nadu');
+insert into tblCity values('Warangal','Telangana');
+insert into tblCity values('West Godavari','Telangana');
+insert into tblCity values('Chittoor','Telangana');
+insert into tblCity values('Hyderabad','Telangana');
+insert into tblCity values('Dhalai','Tripura');
+insert into tblCity values('West Tripura','Tripura');
+insert into tblCity values('North Tripura','Tripura');
+insert into tblCity values('South Tripura','Tripura');
+insert into tblCity values('Agra','Uttar Pradesh');
+insert into tblCity values('Ambedkar Nagar','Uttar Pradesh');
+insert into tblCity values('Bagpat','Uttar Pradesh');
+insert into tblCity values('Balrampur','Uttar Pradesh');
+insert into tblCity values('Bareilly','Uttar Pradesh');
+insert into tblCity values('Budaun','Uttar Pradesh');
+insert into tblCity values('Chitrakoot','Uttar Pradesh');
+insert into tblCity values('Etawah','Uttar Pradesh');
+insert into tblCity values('Fatehpur','Uttar Pradesh');
+insert into tblCity values('Ghaziabad','Uttar Pradesh');
+insert into tblCity values('Gorakhpur','Uttar Pradesh');
+insert into tblCity values('Hapur','Uttar Pradesh');
+insert into tblCity values('Hathras','Uttar Pradesh');
+insert into tblCity values('Jhansi','Uttar Pradesh');
+insert into tblCity values('Kanpur Dehat','Uttar Pradesh');
+insert into tblCity values('Kheri','Uttar Pradesh');
+insert into tblCity values('Lucknow','Uttar Pradesh');
+insert into tblCity values('Mainpuri','Uttar Pradesh');
+insert into tblCity values('Meerut','Uttar Pradesh');
+insert into tblCity values('Muzaffarnagar','Uttar Pradesh');
+insert into tblCity values('RaeBareli','Uttar Pradesh');
+insert into tblCity values('Sant Kabir Nagar','Uttar Pradesh');
+insert into tblCity values('Shravasti','Uttar Pradesh');
+insert into tblCity values('Sonbhadra','Uttar Pradesh');
+insert into tblCity values('Varanasi','Uttar Pradesh');
+insert into tblCity values('Aligarh','Uttar Pradesh');
+insert into tblCity values('Auraiya','Uttar Pradesh');
+insert into tblCity values('Bahraich','Uttar Pradesh');
+insert into tblCity values('Banda','Uttar Pradesh');
+insert into tblCity values('Basti','Uttar Pradesh');
+insert into tblCity values('Bulandshahar','Uttar Pradesh');
+insert into tblCity values('Deoria','Uttar Pradesh');
+insert into tblCity values('Faizabad','Uttar Pradesh');
+insert into tblCity values('Firozabad','Uttar Pradesh');
+insert into tblCity values('Ghazipur','Uttar Pradesh');
+insert into tblCity values('Jalaun','Uttar Pradesh');
+insert into tblCity values('Jyotiba Phule Nagar','Uttar Pradesh');
+insert into tblCity values('Kanpur Nagar','Uttar Pradesh');
+insert into tblCity values('Kushinagar','Uttar Pradesh');
+insert into tblCity values('Maharajganj','Uttar Pradesh');
+insert into tblCity values('Mathura','Uttar Pradesh');
+insert into tblCity values('Mirzapur','Uttar Pradesh');
+insert into tblCity values('Pilibhit','Uttar Pradesh');
+insert into tblCity values('Rampur','Uttar Pradesh');
+insert into tblCity values('Sant Ravidas Nagar','Uttar Pradesh');
+insert into tblCity values('Siddharthnagar','Uttar Pradesh');
+insert into tblCity values('Sultanpur','Uttar Pradesh');
+insert into tblCity values('Allahabad','Uttar Pradesh');
+insert into tblCity values('Azamgarh','Uttar Pradesh');
+insert into tblCity values('Ballia','Uttar Pradesh');
+insert into tblCity values('Barabanki','Uttar Pradesh');
+insert into tblCity values('Bijnor','Uttar Pradesh');
+insert into tblCity values('Chandauli','Uttar Pradesh');
+insert into tblCity values('Etah','Uttar Pradesh');
+insert into tblCity values('Farrukhabad','Uttar Pradesh');
+insert into tblCity values('Gautam Buddha Nagar','Uttar Pradesh');
+insert into tblCity values('Gonda','Uttar Pradesh');
+insert into tblCity values('Hardoi','Uttar Pradesh');
+insert into tblCity values('Jaunpur','Uttar Pradesh');
+insert into tblCity values('Kannauj','Uttar Pradesh');
+insert into tblCity values('Kaushambi','Uttar Pradesh');
+insert into tblCity values('Lalitpur','Uttar Pradesh');
+insert into tblCity values('Mahoba','Uttar Pradesh');
+insert into tblCity values('Mau','Uttar Pradesh');
+insert into tblCity values('Moradabad','Uttar Pradesh');
+insert into tblCity values('Pratapgarh','Uttar Pradesh');
+insert into tblCity values('Saharanpur','Uttar Pradesh');
+insert into tblCity values('Shahjahanpur','Uttar Pradesh');
+insert into tblCity values('Sitapur','Uttar Pradesh');
+insert into tblCity values('Unnao','Uttar Pradesh');
+insert into tblCity values('Almora','Uttarakhand');
+insert into tblCity values('Champawat','Uttarakhand');
+insert into tblCity values('Nainl','Uttarakhand');
+insert into tblCity values('Rudraprayag','Uttarakhand');
+insert into tblCity values('Uttarkashi','Uttarakhand');
+insert into tblCity values('Bageshwar','Uttarakhand');
+insert into tblCity values('Dehradun','Uttarakhand');
+insert into tblCity values('Pauri','Uttarakhand');
+insert into tblCity values('Tehri','Uttarakhand');
+insert into tblCity values('Garhwal','Uttarakhand');
+insert into tblCity values('Chamoli','Uttarakhand');
+insert into tblCity values('Haridwar','Uttarakhand');
+insert into tblCity values('Pithoragarh','Uttarakhand');
+insert into tblCity values('Udham Singh Nagar','Uttarakhand');
+insert into tblCity values('Bankura','West Bengal');
+insert into tblCity values('Cooch Behar','West Bengal');
+insert into tblCity values('Hooghly','West Bengal');
+insert into tblCity values('Malda','West Bengal');
+insert into tblCity values('North 24 Parganas','West Bengal');
+insert into tblCity values('South 24 Parganas','West Bengal');
+insert into tblCity values('Bardhaman','West Bengal');
+insert into tblCity values('Darjeeling','West Bengal');
+insert into tblCity values('Howrah','West Bengal');
+insert into tblCity values('Murshidabad','West Bengal');
+insert into tblCity values('North Dinajpur','West Bengal');
+insert into tblCity values('South Dinajpur','West Bengal');
+insert into tblCity values('Birbhum','West Bengal');
+insert into tblCity values('East Medinipur','West Bengal');
+insert into tblCity values('Jalpaiguri','West Bengal');
+insert into tblCity values('Nadia','West Bengal');
+insert into tblCity values('Purulia','West Bengal');
+insert into tblCity values('West Medinipur','West Bengal');
+insert into tblCity values('DurgaPur','West Bengal');
+insert into tblCity values('Kolkata','West Bengal');
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+     
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

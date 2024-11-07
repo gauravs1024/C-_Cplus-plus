@@ -1,0 +1,62 @@
+
+
+
+import java.io.*;
+public class State
+{
+    public static void main(String aa[])
+    {
+       try
+       {
+          String str="Andaman And Nicobar:Andhra Pradesh:Arunachal Pradesh:Assam:Bihar:Chandigarh:Chhattisgarh:Dadar And Nagar Haveli:Daman and Diu:Delhi:Goa:Gujarat:Haryana:Himachal Pradesh:Jammu and Kashmir:Jharkhand:Karnataka:Kerala:Lakshadweep:Madhya Pradesh:Maharashtra:Manipur:Meghalaya:Mizoram:Nagaland:Orissa:Puducherry:Punjab:Rajasthan:Sikkim:Tamil Nadu:Telangana:Tripura:Uttar Pradesh:Uttarakhand:West Bengal";
+          String ar[] = str.split(":");
+          PrintWriter w = new PrintWriter(new FileWriter("state.sql"));
+          for(String n : ar)
+          {
+            str = String.format("insert into tblState values('%s');",n);
+            w.println(str)  ;       
+          }
+          w.close(); 
+       }
+       catch(Exception ex) {}
+    }
+}
+
+_______________________________________________________________
+
+import java.io.*;
+public class City
+{
+    public static void main(String aa[])
+    {
+       try
+       {
+          String str="Andaman And Nicobar:Andhra Pradesh:Arunachal Pradesh:Assam:Bihar:Chandigarh:Chhattisgarh:Dadar And Nagar Haveli:Daman and Diu:Delhi:Goa:Gujarat:Haryana:Himachal Pradesh:Jammu and Kashmir:Jharkhand:Karnataka:Kerala:Lakshadweep:Madhya Pradesh:Maharashtra:Manipur:Meghalaya:Mizoram:Nagaland:Orissa:Puducherry:Punjab:Rajasthan:Sikkim:Tamil Nadu:Telangana:Tripura:Uttar Pradesh:Uttarakhand:West Bengal";
+          String ct[],ar[] = str.split(":");
+          BufferedReader r = new BufferedReader(new FileReader("city.txt"));
+          PrintWriter w = new PrintWriter(new FileWriter("city.sql"));
+          for(String n : ar)
+          {
+            ct = r.readLine().split(":");
+            for(String c : ct)  
+            {
+              str = String.format("insert into tblCity values('%s','%s');",c,n);
+              w.println(str)  ;       
+            }
+          }
+          w.close(); 
+       }
+       catch(Exception ex) {}
+    }
+}
+
+
+
+
+
+
+
+
+
+
+

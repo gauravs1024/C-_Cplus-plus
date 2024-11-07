@@ -1,0 +1,403 @@
+
+Q- what is this?
+ this- always with U, we can't design any standard project without using this operator.
+
+  this - operator,it return the ref of an current object(this refer to the current ref id of an object), like this pointer
+         in C++ or like this in C#. it is for - 
+   -> where we want to refer the current object.
+                     for msg dialog    -   parent, msg 
+               JOptionPane.showMessageDialog(this,"Employee record successfully Inserted");
+   -> which is the object variable & which is the argument/local variable for that we can use this operator. 
+   -> if we want to call the own Constructor(one Constrructor to another Constructor calling) without using new operator,
+      for that we can use this operator. own class Constructor calling concept only supported by Java + C# & VC++.
+
+  in desi Language - this ek aisa implicit object hai jo without object design kare object ka role play karta hai.
+  in simple Language - jis object se aap call karte ho method ko us object ki ref id java implicit pass
+                       kar deta hai & wo ref id kiske inside hoti hai this ke inside hoti hai.
+
+  inside class we have 2 types of members - 
+     1. class members - static members - call with classname & can call with object also
+     2. instance members - non static - only call with object.
+          app this likho ya na likho java implicit this pass kar deta hai.
+
+ in java we have - 
+   this - refer the current class global variable - apne liye. 
+   super - refer the parent class global variable - parent ke liye(super keyword auto cast into parent class object.)
+
+   this use - as a object - this.empno, this.sal , this.mob - currentobject.empno,currentobject.mob, currentobject.sal 
+              as a method - this(argument/s); - for call the own class Constructor.    
+    
+  new & this - both r the operator.  jo hume kuch de vo operator hota hai. 
+
+
+// diff b/w local & global variable
+class Th1
+{
+   int a = 1000; // global - instance var 
+   void disp()
+   {
+      int a = 100; // local
+      System.out.println("a = "+a);  // local a - 100
+      System.out.println("a = "+this.a);  // currentobject.a - global.a - 1000
+   }
+   public static void main(String aa[])
+   {
+      Th1 n = new Th1(); 
+      n.disp();
+   }
+}
+
+___________________________________________________________
+ super - super keyword use for call / access the super class variables, super class methods or super class Constructor.
+         super means one step up - just inherited class. A -> B -> C , if we use super in C class that means B class 
+         members, if we use super in B class that means A class members.
+
+         * super keyword auto casted hai in parent class object - no need to cast that. 
+ 
+ -> super.varName - super class variable calling - no use
+ -> super.methodName() - super class method calling - minor use in servlets or project development.
+
+     ex - 
+          class DB
+          {
+	      Connection connect() { connectivity algo with Oracle Database connectivity....}
+          }
+          class StudentDB extends DB
+          {
+              Connection connect() { connectivity algo with MySQL Database connectivity....}  - override kiya. 
+              void addStu(String name,String dob,String mob, String mailid, String aadhaarno)
+              {
+                 Connection c = connect(); - own class connect() method calling - connectivity with MySQL database.
+                 Connection c = super.connect(); - parent class connect() method calling - connectivity with Oracle database.
+              }
+          }
+
+       java ne kaha agar aapne method ko override bhi kar dete ho tab bhi aap parent class ke method ko call kar sakte ho 
+       with the help of super keyword - this is extra feature of Java - means U have 2 choices - own + parent method. 
+          if we want to call own class method after override just write down - methodName() only. but if we want to
+          call the parent class method after override then U can with help of super.methodName(); name. 
+
+  -> super(x); - super class one argument passing Constructor calling - Major use
+
+ in java we have - 
+
+   this - refer the current class global variable - apne liye. 
+   super - refer the parent class global variable - parent ke liye
+
+ this - apne liye - apni class ke global var ko refer karenge - currentobject.varName
+ super - for parent ke liye - parent class ka global var - parent.varName
+ 
+Q- what is final?
+
+  final - final that means final - fixed - can't change, like const in C & C++, like read only in .Net 
+          final can be variables, methods, object & can be class also. 
+ 
+ * if variable/object is final then can't reassign any value.(means var final hai to wo reassign nahi hoga)
+      Q- what is the need of final var?
+    Ans- if we want to design some const variables they can use in whole project, but user/child
+         can't reassign that then declare as final.
+    ex - 
+      final String DSN = "jdbc:mysql://localhost:3306/mydb";  - const variable - can't reassign
+      final String SENDERID = "info@agilesoftech.in";  - const variable - can't reassign
+      final int PORT = 5001;  - const variable - can't reassign
+
+    -> all 3 attributes can use in whole project but user/child can't reassign that.
+
+  * if method is final then can't override in child class.
+
+      Q- what is the need of final method?
+    Ans- if we want to design some const methods they can use in whole project, but user/child can't override in own
+         class then declare as final.
+
+      class Admin
+      {
+         final Connection connect() 
+         {
+           connect with mysql database & return the connection object.
+         }
+         final String addUser(String uid,String pass)
+         {
+            user record insert in Login table return the status as msg - user created or sorry user already exist
+         }
+         final boolean checkId(String uid,String pass) 
+         {
+           check the user status user valid or not, if valid then return true else return false;
+         }
+      }
+  
+      ** User/child can use all 3 methods but can't override in own class. bcos all methods r final. 
+
+  
+  * if class is final then can't extends - can't inherit.
+
+    Q- what is the need of final class? kyo banaye?
+  Ans- if we want to design all methods of a class as final or control the copyright problems. then refer the final class. 
+       String class is a kind of final class - we can't inherit. 
+
+   final class - jo kabhi inherit nahi hogi, but can use as non sub class. 
+   Abstract class - jo hamesa inherit hi hogi, we can't use as non sub class - final ka reverse Abstract class
+
+___________________________________________
+// F1.java - final var example - can't reassign that 
+class F1
+{
+  final int a = 1000;
+  void disp()
+  {
+     // a = 10; // error - can't assign a value to a final var a.
+     System.out.print("a = "+a);
+  }
+  public static void main(String[] ar) 
+  {
+    F1 o = new F1();
+    o.disp(); 
+  }
+}
+// output - a = 1000
+___________________________________________
+// F2.java - final method example - can't override that 
+class F
+{
+  final void disp()
+  {
+     System.out.print("Parent says, I m the Boss");
+  }
+}
+class F2 extends F
+{
+ /*
+  // error - can't override final method disp. bcos overridden method is final. 
+  void disp()
+  {
+     System.out.print("Child says, I m the Big Boss");
+  }
+ */
+  public static void main(String[] ar) 
+  {
+    F2 o = new F2();
+    o.disp(); 
+  }
+}
+___________________________________________
+// F3.java - final class example - can't inherit that 
+final class F
+{
+  void disp()
+  {
+     System.out.print("I m inside final class");
+  }
+}
+class F3 // extends F // error - can't inherit with final class 
+{
+  public static void main(String[] ar) 
+  {
+    F o = new F(); // as object design design kar sakte hai - non sub class can design, but can't extends
+    o.disp(); 
+  }
+}
+/*
+   super class - when one class inherit with another class - is-A Relation concept - live ex - parent & child relation
+   non sub class - when one class object created inside another class - has-A relation concept , live ex - landlord & rent person
+   now F3 is the non sub class for F 
+*/
+___________________________________________
+
+/* F4.java - 
+  Q- we have one final variables, final variable ko kaha kaha initialize kar sakte hai?
+  Q- we have one final static variables, final static variable ko kaha kaha initialize kar sakte hai?
+
+ we can initialize final static variables - 
+   1. at declare time 
+        final static int a = 10;
+   2. inside static block 
+        final static int a; 
+        static { a = 1000; }   - bcos static method & static block can access only static members. 
+
+ we can initialize final variables - 
+   1. at declare time 
+        final int b = 10;
+   2. inside initializer block 
+        final int b; 
+        { b = 1000; }
+   3. inside Constructor 
+        final int b; 
+        F4(){ b = 1000; }
+
+ Q- we can't use final with? - final ko kaha kaha use nahi kar sakte?
+
+   1. with Constructor.
+   2. with abstract method.
+   3. we can't final with interface. 
+
+*/
+class F4
+{
+   final static int a = 1000;
+   final static int b;
+   static { b = 100; }
+   final int c = 10;
+   final int d,e;
+   { d = 20; }
+   F4() { e = 30; }
+   void disp()
+   {
+     System.out.printf("a = %d, b = %d, c = %d, d = %d, e = %d",a,b,c,d,e);
+   }
+   public static void main(String aa[])
+   {
+     F4 o = new F4();
+     o.disp();
+   }
+}
+______________________________________________
+// F5.java - final array example. 
+public class F5
+{
+     public static void main(String []args)
+     {
+        final int[] ar = {1,3,5,7,6}; // can't reassign
+        ar[0] = 9; // can change - elements ka value change kar sakte hai, but can't reallocate array again. 
+        System.out.println("value of ar[0] - "+ar[0]);
+        ar = new int[10];  // error: cannot assign a value to final variable ar
+     }
+}
+
+
+
+
+// super class variable calling - no use
+class SS
+{
+   int a = 10000;
+}
+class S extends SS 
+{
+  int a = 1000;
+}
+class S1 extends S
+{
+  int a = 100;
+  void disp() 
+  {
+    int a = 10; 
+    System.out.printf("a = %d\n",a);  // local a - 10
+    System.out.printf("a = %d\n",this.a);  // currentobject.a - global of current class - 100
+    System.out.printf("a = %d\n",super.a);  // superclass.a calling - 1000 
+    System.out.printf("a = %d\n",((SS)this).a);  // 10000 
+  }
+  public static void main(String aa[])
+  {
+     S1 o = new S1();
+     o.disp();
+  }
+}
+
+  final - final that means final - fixed - can't change, like const in C & C++, like read only in .Net 
+          final can be variables, methods, object & can be class also. 
+ 
+ * if variable/object is final then can't reassign any value.(means var final ha to wo reassign nahi hoga)
+      Q- what is the need of final var?
+    Ans- if we want to design some const variables they can use in whole project, but user/child
+         can't reassign that then declare as final.
+    ex - 
+      final String DSN = "jdbc:mysql://localhost:3306/mydb";  - const variable - can't reassign
+      final String SENDERID = "info@agilesoftech.in";  - const variable - can't reassign
+      final int PORT = 5001;  - const variable - can't reassign
+
+    -> all 3 attributes can use in whole project but user/child can't reassign that.
+
+  * if method is final then can't override in child class.
+
+      Q- what is the need of final method?
+    Ans- if we want to design some const methods they can use in whole project, but user/child can't override in own
+         class then declare as final.
+
+      class Admin
+      {
+         final Connection connect() 
+         {
+           connect with mysql database & return the connection object.
+         }
+         final String addUser(String uid,String pass)
+         {
+            user record insert in Login table return the status as msg - user created or sorry user already exist
+         }
+         final boolean checkId(String uid,String pass) 
+         {
+           check the user status user valid or not, if valid then return true else return false;
+         }
+      }
+  
+      ** User/child can use all 3 methods but can't override in own class. bcos all methods r final. 
+
+  * if class is final then can't extends - can't inherit.
+
+    Q- what is the need of final class? kyo banaye?
+  Ans- if we want to design all methods of a class as final or control the copyright problems. then refer the final class. 
+       String class is a kind of final class - we can't inherit. 
+
+   final class - jo kabhi inherit nahi hogi, but can use as non sub class. 
+   Abstract class - jo hamesa inherit hi hogi, we can't use as non sub class - final ka reverse Abstract class
+
+// final variable example
+class F1
+{
+   final int a = 1000;
+   void disp()
+   {
+     // a = 10; // error : cannot assign a value to final variable a
+     System.out.println("a = "+a);
+   }
+   public static void main(String aa[])
+   {
+     F1 o = new F1();
+     o.disp();
+   }
+}
+__________________________________________
+
+// final method example
+class F
+{
+   final void disp()
+   {
+     System.out.println("Parent says, I m the Boss");
+   }
+}
+class F2 extends F
+{
+ /*
+   // error : can't override final method disp, bcos overridden method is final. 
+   void disp()
+   {
+     System.out.println("Child Says,, I m the Big Boss");
+   }
+ */
+   public static void main(String aa[])
+   {
+     F2 o = new F2();
+     o.disp();
+   }
+}
+__________________________________________
+// final class example
+final class F
+{
+   void disp()
+   {
+     System.out.println("I m inside final class.");
+   }
+}
+class F3 // extends F // error - can't inherit with final class F 
+{
+   public static void main(String aa[])
+   {
+     F o = new F();
+     o.disp();
+   }
+}
+// sub class - when one class inherit with another class - is-A relation concept - parent & child relations
+// non sub class - when one class object created inside another class - has-A relation concept
+// now F3 is the non sub class for F 
+
+
